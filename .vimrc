@@ -31,6 +31,7 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_closurecompiler_script="make"
 let g:syntastic_enable_javascript_checker = 1
 let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_python_pylint_args = '--rcfile=/home/sagarm/.pylintrc'
 let g:syntastic_javascript_checkers = ['closurecompiler']
 let g:ycm_server_python_interpreter = 'usr/bin/python'
 
