@@ -3,13 +3,13 @@ filetype off
 set shell=/bin/bash
 
 call plug#begin('~/.vim/bundle')
-Plug 'Valloric/YouCompleteMe', { 'do': 'python3 ./install.py --clang-completer' }
+Plug 'Valloric/YouCompleteMe', { 'do': 'sudo -H npm install -g tern typescript && sudo -H pip2 install jedi && python2 ./install.py --clang-completer --gocode-completer --tern-completer' }
 Plug 'scrooloose/syntastic'
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
-Plug 'leafgarland/typescript-vim'
+Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 Plug 'junegunn/fzf', { 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 call plug#end()
@@ -39,8 +39,8 @@ let g:syntastic_python_checkers = ['pylint']
 let g:syntastic_python_pylint_args = '--rcfile=/home/sagarm/.pylintrc'
 let g:syntastic_javascript_checkers = ['closurecompiler']
 
-" Use python3 ./install.py --clang-completer when installing YCM.
-let g:ycm_server_python_interpreter = '/usr/bin/python3'
+" Use python2 ./install.py --clang-completer when installing YCM.
+let g:ycm_server_python_interpreter = '/usr/bin/python2'
 autocmd FileType python let b:codefmt_formatter = 'yapf'
 
 nnoremap <leader>m :make<CR>

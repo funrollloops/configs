@@ -147,3 +147,5 @@ fi
 
 alias vi=nvim
 alias vim=nvim
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
