@@ -115,7 +115,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
-export GOPATH=/home/sagarm/code/go
+export GOPATH=$HOME/code/go:$HOME/code/go_appengine/goroot
 alias open="xdg-open"
 export PATH=$PATH:~/.bin:~/code/go/bin
 export PATH=$PATH:$HOME/.bin:$HOME/code/go/bin:$HOME/code/go_appengine
@@ -147,5 +147,6 @@ fi
 
 alias vi=nvim
 alias vim=nvim
+alias view="nvim -R"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

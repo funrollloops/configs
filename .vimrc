@@ -38,10 +38,15 @@ let g:syntastic_enable_javascript_checker = 1
 let g:syntastic_python_checkers = ['pylint']
 let g:syntastic_python_pylint_args = '--rcfile=/home/sagarm/.pylintrc'
 let g:syntastic_javascript_checkers = ['closurecompiler']
+let g:syntastic_go_checkers = ['go', 'govet']
 
 " Use python2 ./install.py --clang-completer when installing YCM.
 let g:ycm_server_python_interpreter = '/usr/bin/python2'
 autocmd FileType python let b:codefmt_formatter = 'yapf'
+
+" Disable go autofmt from vim-go because closes all folds on bufwrite.
+let g:go_fmt_autosave = 0
+autocmd BufWritePre *.go :FormatCode<CR>
 
 nnoremap <leader>m :make<CR>
 nnoremap <leader>ss :syntax sync fromStart<CR>
