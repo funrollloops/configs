@@ -2,19 +2,17 @@ set nocompatible
 filetype off
 set shell=/bin/bash
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'scrooloose/syntastic'
-Plugin 'fatih/vim-go.git'
-Plugin 'google/vim-maktaba'
-Plugin 'google/vim-codefmt'
-Plugin 'google/vim-glaive'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
-call vundle#end()
+call plug#begin('~/.vim/bundle')
+Plug 'Valloric/YouCompleteMe', { 'do': 'python3 ./install.py --clang-completer' }
+Plug 'scrooloose/syntastic'
+Plug 'fatih/vim-go'
+Plug 'google/vim-maktaba'
+Plug 'google/vim-codefmt'
+Plug 'google/vim-glaive'
+Plug 'leafgarland/typescript-vim'
+Plug 'junegunn/fzf', { 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+call plug#end()
 call glaive#Install()
 filetype plugin indent on
 
