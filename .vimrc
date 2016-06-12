@@ -7,40 +7,51 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/syntastic'
+Plugin 'fatih/vim-go.git'
 Plugin 'google/vim-maktaba'
 Plugin 'google/vim-codefmt'
 Plugin 'google/vim-glaive'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 call vundle#end()
 call glaive#Install()
 filetype plugin indent on
 
-set sts=2 sw=2 ts=2 et foldmethod=indent ruler ai
-set ic smartcase hlsearch incsearch
-syn sync minlines=1000
-syntax enable
+
+set tabstop=2 softtabstop=2 shiftwidth=2
+set autoindent expandtab foldmethod=indent smarttab ruler
+set incsearch smartcase ignorecase hlsearch
+syntax sync minlines=1000
+syntax on
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_typescript_tsc_fname = ''
 "let g:syntastic_javascript_closurecompiler_script="/home/sagarm/.bin/closure-compiler"
 let g:syntastic_javascript_closurecompiler_script="make"
 let g:syntastic_enable_javascript_checker = 1
 let g:syntastic_python_checkers = ['pylint']
 let g:syntastic_python_pylint_args = '--rcfile=/home/sagarm/.pylintrc'
 let g:syntastic_javascript_checkers = ['closurecompiler']
-let g:ycm_server_python_interpreter = 'usr/bin/python'
 
+" Use python3 ./install.py --clang-completer when installing YCM.
+let g:ycm_server_python_interpreter = '/usr/bin/python3'
 autocmd FileType python let b:codefmt_formatter = 'yapf'
 
+nnoremap <leader>m :make<CR>
+nnoremap <leader>ss :syntax sync fromStart<CR>
 vnoremap <leader>f :FormatLines<CR>
 nnoremap <leader>f :FormatCode<CR>
 nnoremap <C-D> :e `dirname %`<CR>
 nnoremap <leader>ga :!git add %<CR>
+nnoremap <leader>t :FZF<CR>
 imap <C-J> <ESC><C-J>
 nnoremap <C-J> /<+[^+]*+><CR>cf>
 inoremap <C-K> <++><ESC>
