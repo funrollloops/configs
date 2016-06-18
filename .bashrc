@@ -139,7 +139,6 @@ function notify {
 ## Android
 alias adb=~/Android/Sdk/platform-tools/adb
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-eval `dircolors ~/.dir_colors`
 
 if [ -n "$DISPLAY" -a "$TERM" == 'xterm' ]; then
   export TERM=xterm-256color
