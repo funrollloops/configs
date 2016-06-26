@@ -144,8 +144,14 @@ if [ -n "$DISPLAY" -a "$TERM" == 'xterm' ]; then
   export TERM=xterm-256color
 fi
 
+## Neovim
 alias vi=nvim
 alias vim=nvim
 alias view="nvim -R"
+
+## Package management
+alias spip="sudo -H pip2"
+alias spip3="sudo -H pip3"
+alias snpm="sudo -H npm"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
