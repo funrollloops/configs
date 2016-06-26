@@ -22,9 +22,10 @@ for file in $files; do
   link "$file" "$HOME/$(basename $file)"
 done
 
-mkdir -p ~/.config/nvim ~/.vim/{autoload,bundle}
+mkdir -p ~/.config/nvim ~/.vim/{autoload,bundle,after/ftplugin/python}
 link ~/.vim/autoload ~/.config/nvim/autoload
 link ~/.vim/bundle ~/.config/nvim/bundle
+link ~/.vim/after ~/.config/nvim/after
 link $(readlink -f ./.vimrc) ~/.config/nvim/init.vim
-
+link $(readlink -f ./python.vim) ~/.config/nvim/after/ftplugin/python/python.vim
 echo done
