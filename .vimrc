@@ -20,6 +20,7 @@ filetype plugin indent on
 set tabstop=2 softtabstop=2 shiftwidth=2
 set autoindent expandtab foldmethod=indent smarttab ruler
 set incsearch smartcase ignorecase hlsearch
+set mouse=""
 syntax sync minlines=1000
 syntax on
 
@@ -49,6 +50,7 @@ let g:go_fmt_autosave = 0
 autocmd BufWritePre *.go :FormatCode<CR>
 
 nnoremap <leader>m :make<CR>
+vnoremap <leader>s :sort<CR>
 nnoremap <leader>ss :syntax sync fromStart<CR>
 vnoremap <leader>f :FormatLines<CR>
 nnoremap <leader>f :FormatCode<CR>
