@@ -54,8 +54,7 @@ extension-pkg-whitelist=
 # no Warning level messages displayed, use"--disable=all --enable=classes
 # --disable=W"
 #disable=
-disable=missing-docstring
-disable=too-few-public-methods
+disable=missing-docstring,too-few-public-methods
 
 [REPORTS]
 

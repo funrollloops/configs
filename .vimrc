@@ -12,6 +12,7 @@ Plug 'google/vim-glaive'
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 Plug 'junegunn/fzf', { 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'vim-airline/vim-airline'
 call plug#end()
 call glaive#Install()
 filetype plugin indent on
@@ -24,9 +25,7 @@ set mouse=""
 syntax sync minlines=1000
 syntax on
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+let g:airline#extensions#tabline#enabled = 1
 
 let g:syntastic_always_populate_loc_list = 1
 "let g:syntastic_auto_loc_list = 1
