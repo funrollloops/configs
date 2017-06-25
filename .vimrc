@@ -5,6 +5,7 @@ set shell=/bin/bash
 call plug#begin('~/.vim/bundle')
 Plug 'Valloric/YouCompleteMe', { 'do': 'sudo -H npm install -g tern typescript && sudo -H pip2 install jedi && python2 ./install.py --clang-completer --gocode-completer --tern-completer' }
 Plug 'scrooloose/syntastic'
+Plug 'scrooloose/nerdtree'
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
@@ -39,6 +40,7 @@ let g:syntastic_python_checkers = ['pylint']
 let g:syntastic_python_pylint_args = '--rcfile=/home/sagarm/.pylintrc'
 let g:syntastic_javascript_checkers = ['closurecompiler']
 let g:syntastic_go_checkers = ['go', 'govet']
+let g:syntastic_cpp_compiler_options = ' -std=c++14 -stdlib=libc++'
 
 " Use python2 ./install.py --clang-completer when installing YCM.
 let g:ycm_server_python_interpreter = '/usr/bin/python2'
@@ -62,4 +64,5 @@ inoremap <C-K> <++><ESC>
 
 nnoremap <leader>gd :term git diff %<CR>
 nnoremap <leader>ga :term git add -p %<CR>
+nnoremap <leader>gc :term git commit<CR>
 nnoremap <leader>gaa :term git add -p<CR>

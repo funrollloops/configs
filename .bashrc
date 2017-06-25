@@ -155,3 +155,5 @@ alias spip3="sudo -H pip3"
 alias snpm="sudo -H npm"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64"
