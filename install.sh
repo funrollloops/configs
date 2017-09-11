@@ -30,3 +30,24 @@ link $(readlink -f ./.vimrc) ~/.config/nvim/init.vim
 link $(readlink -f ./python.vim) ~/.config/nvim/after/ftplugin/python/python.vim
 link $(readlink -f bin) ~/.bin
 echo done
+
+if [ ! -e ~/.vim/autoload/plug.vim ] ; then
+  echo 'installing vim-plug'
+  curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  # For clang-complete etc
+  sudo apt install python-dev npm python-pip
+  if which nvim > /dev/null; then
+    nvim +PlugInstall
+  elif which vim > /dev/null; then
+    vim +PlugInstall
+  else
+    sudo apt install vim
+    vim +PlugInstall
+  fi
+else
+  echo 'vim-plug already installed'
+fi
+
+echo 'final step: installing packages...'
+sudo apt install tmux neovim
