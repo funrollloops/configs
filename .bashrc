@@ -137,7 +137,6 @@ function notify {
 }
 
 ## Android
-alias adb=~/Android/Sdk/platform-tools/adb
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 if [ -n "$DISPLAY" -a "$TERM" == 'xterm' ]; then

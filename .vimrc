@@ -66,3 +66,8 @@ nnoremap <leader>gd :term git diff %<CR>
 nnoremap <leader>ga :term git add -p %<CR>
 nnoremap <leader>gc :term git commit<CR>
 nnoremap <leader>gaa :term git add -p<CR>
+
+" The default diff colorscheme has foreground=background in some cases.
+if &diff
+  colorscheme evening
+endif
