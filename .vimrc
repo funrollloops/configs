@@ -61,6 +61,7 @@ nnoremap <leader>t :FZF<CR>
 imap <C-J> <ESC><C-J>
 nnoremap <C-J> /<+[^+]*+><CR>cf>
 inoremap <C-K> <++><ESC>
+nnoremap <C-U> :e %:p:s,.h$,.X123X,:s,.cc$,.h,:s,.X123X$,.cc,<CR>
 
 nnoremap <leader>gd :term git diff %<CR>
 nnoremap <leader>ga :term git add -p %<CR>
