@@ -23,6 +23,7 @@ set tabstop=2 softtabstop=2 shiftwidth=2
 set autoindent expandtab foldmethod=indent smarttab ruler
 set incsearch smartcase ignorecase hlsearch
 set mouse=""
+set background=light
 syntax sync minlines=1000
 syntax on
 
