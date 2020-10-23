@@ -152,6 +152,7 @@ alias view="nvim -R"
 alias spip="sudo -H pip2"
 alias spip3="sudo -H pip3"
 alias snpm="sudo -H npm"
+alias clang-tidy="clang-tidy -checks=abseil-*"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
