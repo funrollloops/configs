@@ -33,18 +33,14 @@ echo done
 
 if [ ! -e ~/.vim/autoload/plug.vim ] ; then
   echo 'installing vim-plug'
-  curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  (
+    mkdir -p ~/.vim/autoload
+    cd ~/.vim/autoload
+    wget https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  )
   # For clang-complete etc
-  sudo apt install python-dev npm python-pip
-  if which nvim > /dev/null; then
-    nvim +PlugInstall
-  elif which vim > /dev/null; then
-    vim +PlugInstall
-  else
-    sudo apt install vim
-    vim +PlugInstall
-  fi
+  sudo apt install python3-dev npm python3-pip git neovim tmux
+  nvim +PlugInstall
 else
   echo 'vim-plug already installed'
 fi
