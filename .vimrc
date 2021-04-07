@@ -61,12 +61,6 @@ let g:syntastic_cpp_compiler_options = ' -std=c++14 -stdlib=libc++'
 let g:syntastic_enable_rust_checker = 1
 autocmd FileType rust let g:syntastic_rust_checkers = ['cargo']
 
-let g:LanguageClient_serverCommands = {
-    \ 'cpp': ['clangd-6.0'],
-    \ 'rust': ['/home/sagarm/.cargo/bin/rls'],
-    \ 'python': ['/usr/local/bin/pyls'],
-    \ }
-
 let g:rustfmt_autosave = 1
 
 " Use python2 ./install.py --clang-completer when installing YCM.

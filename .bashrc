@@ -120,16 +120,14 @@ if ! shopt -oq posix; then
   fi
 fi
 
-export GOPATH=$HOME/code/go:$HOME/code/go_appengine/goroot
 alias open="xdg-open"
-export PATH=$PATH:~/.bin:~/code/go/bin
-export PATH=$PATH:$HOME/.bin:$HOME/code/go/bin:$HOME/code/go_appengine
+export PATH=$HOME/.bin:$PATH
 export EDITOR=nvim
 
 function calc() {
-python <<EOF
+python3 <<EOF
 from math import *
-print $@
+print($@)
 EOF
 }
 
@@ -140,9 +138,6 @@ function notify {
     notify-send -i error "$?: $@"
   fi
 }
-
-## Android
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 if [ -n "$DISPLAY" -a "$TERM" == 'xterm' ]; then
   export TERM=xterm-256color
@@ -161,4 +156,3 @@ alias clang-tidy="clang-tidy -checks=abseil-*"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda/lib64:/usr/local/cuda/extras/CUPTI/lib64"

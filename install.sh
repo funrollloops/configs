@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 files=$(find .  -maxdepth 1 -name '.*' -type f  -not -name '*.swp' |
         xargs -n1 readlink -f)
 
