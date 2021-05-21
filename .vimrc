@@ -7,16 +7,6 @@ set hidden
 call plug#begin('~/.vim/bundle')
 Plug 'junegunn/fzf', { 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-if !has('nvim')
-  Plug 'Valloric/YouCompleteMe', { 'do': 'sudo -H npm install -g tern typescript && sudo -H pip2 install jedi && python2 ./install.py --clang-completer --gocode-completer --tern-completer --rust-completer' }
-  Plug 'scrooloose/syntastic'
-else
-  Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-endif
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 Plug 'scrooloose/nerdtree'
 Plug 'fatih/vim-go', { 'for': 'go' }
@@ -26,6 +16,8 @@ Plug 'google/vim-glaive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-syntastic/syntastic'
 Plug 'rust-lang/rust.vim'
+Plug 'ziglang/zig.vim'
+Plug 'neovim/nvim-lspconfig'
 call plug#end()
 call glaive#Install()
 filetype plugin indent on
@@ -60,6 +52,13 @@ let g:syntastic_cpp_compiler_options = ' -std=c++14 -stdlib=libc++'
 
 let g:syntastic_enable_rust_checker = 1
 autocmd FileType rust let g:syntastic_rust_checkers = ['cargo']
+
+let g:LanguageClient_serverCommands = {
+    \ 'cpp': ['clangd-6.0'],
+    \ 'rust': ['/home/sagarm/.cargo/bin/rls'],
+    \ 'python': ['/usr/local/bin/pyls'],
+    \ 'zig': ['/home/sagarm/code/zls/zls']
+    \ }
 
 let g:rustfmt_autosave = 1
 
