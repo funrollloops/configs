@@ -5,19 +5,19 @@ set shell=/bin/bash
 set hidden
 
 call plug#begin('~/.vim/bundle')
+
+if has('nvim')
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+endif
+
 Plug 'junegunn/fzf', { 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 Plug 'scrooloose/nerdtree'
-Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
 Plug 'vim-airline/vim-airline'
-Plug 'vim-syntastic/syntastic'
-Plug 'rust-lang/rust.vim'
-Plug 'ziglang/zig.vim'
-Plug 'neovim/nvim-lspconfig'
 call plug#end()
 call glaive#Install()
 filetype plugin indent on
@@ -29,46 +29,12 @@ set incsearch smartcase ignorecase hlsearch
 set mouse=""
 set background=light
 set inccommand=nosplit
+set completeopt=menuone,longest,noselect
 syntax sync minlines=1000
 syntax on
 
 let g:deoplete#enable_at_startup = 1
-
 let g:airline#extensions#tabline#enabled = 1
-
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_typescript_tsc_fname = ''
-"let g:syntastic_javascript_closurecompiler_script="/home/sagarm/.bin/closure-compiler"
-let g:syntastic_javascript_closurecompiler_script="make"
-let g:syntastic_enable_javascript_checker = 1
-let g:syntastic_python_checkers = ['pylint']
-let g:syntastic_python_pylint_args = '--rcfile=/home/sagarm/.pylintrc'
-let g:syntastic_javascript_checkers = ['closurecompiler']
-let g:syntastic_go_checkers = ['go', 'govet']
-let g:syntastic_cpp_compiler_options = ' -std=c++14 -stdlib=libc++'
-
-let g:syntastic_enable_rust_checker = 1
-autocmd FileType rust let g:syntastic_rust_checkers = ['cargo']
-
-let g:LanguageClient_serverCommands = {
-    \ 'cpp': ['clangd-6.0'],
-    \ 'rust': ['/home/sagarm/.cargo/bin/rls'],
-    \ 'python': ['/usr/local/bin/pyls'],
-    \ 'zig': ['/home/sagarm/code/zls/zls']
-    \ }
-
-let g:rustfmt_autosave = 1
-
-" Use python2 ./install.py --clang-completer when installing YCM.
-let g:ycm_server_python_interpreter = '/usr/bin/python2'
-autocmd FileType python let b:codefmt_formatter = 'yapf'
-
-" Disable go autofmt from vim-go because closes all folds on bufwrite.
-let g:go_fmt_autosave = 0
-autocmd BufWritePre *.go :FormatCode<CR>
 
 nnoremap <leader>m :make<CR>
 vnoremap <leader>s :sort<CR>
@@ -94,20 +60,73 @@ if &diff
   colorscheme evening
 endif
 
-function SetLSPShortcuts()
-  nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
-  nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
-  nnoremap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
-  nnoremap <leader>lt :call LanguageClient#textDocument_typeDefinition()<CR>
-  nnoremap <leader>lx :call LanguageClient#textDocument_references()<CR>
-  nnoremap <leader>la :call LanguageClient_workspace_applyEdit()<CR>
-  nnoremap <leader>lc :call LanguageClient#textDocument_completion()<CR>
-  nnoremap <leader>lh :call LanguageClient#textDocument_hover()<CR>
-  nnoremap <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
-  nnoremap <leader>lm :call LanguageClient_contextMenu()<CR>
-endfunction()
+" Configure treesitter and LSP.
+lua << EOF
+local nvim_lsp = require('lspconfig')
 
-augroup LSP
-  autocmd!
-  autocmd FileType cpp,c,typescript,javascript call SetLSPShortcuts()
-augroup END
+-- Use an on_attach function to only map the following keys
+-- after the language server attaches to the current buffer
+local on_attach = function(client, bufnr)
+  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+  --Enable completion triggered by <c-x><c-o>
+  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  -- Mappings.
+  local opts = { noremap=true, silent=true }
+
+  -- See `:help vim.lsp.*` for documentation on any of the below functions
+  buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  buf_set_keymap('n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+  buf_set_keymap('n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+  buf_set_keymap('n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  buf_set_keymap('n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  buf_set_keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  buf_set_keymap('n', '<leader>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+  buf_set_keymap('n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+  buf_set_keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+end
+nvim_lsp.clangd.setup{ on_attach = on_attach }  -- apt install clangd
+nvim_lsp.gopls.setup{ on_attach = on_attach } -- apt install gopls
+nvim_lsp.zls.setup{ on_attach = on_attach } -- https://github.com/zigtools/zls
+nvim_lsp.tsserver.setup{ on_attach = on_attach }  -- npm install -g typescript typescript-language-server
+nvim_lsp.vimls.setup{ on_attach = on_attach }  -- npm install -g vim-language-server
+nvim_lsp.pyright.setup{ on_attach = on_attach } -- npm install -g pyright
+nvim_lsp.sumneko_lua.setup {
+  cmd = {"/home/sagarm/code/lua-language-server/bin/Linux/lua-language-server", "-E", "/home/sagarm/code/lua-language-server/main.lua"},
+  settings = {
+    Lua = {
+      runtime = {
+        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+        version = 'LuaJIT',
+        -- Setup your lua path
+        path = vim.split(package.path, ';'),
+      },
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = {'vim'},
+      },
+      workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = {
+          [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+          [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+        },
+      },
+      -- Do not send telemetry data containing a randomized but unique identifier
+      telemetry = {
+        enable = false,
+      },
+    },
+  },
+}
+EOF
