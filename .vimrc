@@ -1,3 +1,6 @@
+" Facebook-specific thing, don't remove.
+source $LOCAL_ADMIN_SCRIPTS/master.vimrc
+
 set nocompatible
 filetype off
 set shell=/bin/bash
@@ -47,13 +50,20 @@ nnoremap <leader>t :FZF<CR>
 imap <C-J> <ESC><C-J>
 nnoremap <C-J> /<+[^+]*+><CR>cf>
 inoremap <C-K> <++><ESC>
-inoremap D<< std::cerr << __FILE__ ":" << __LINE__ <<
-nnoremap <C-U> :e %:p:s,.h$,.X123X,:s,.cc$,.h,:s,.X123X$,.cc,<CR>
+inoremap D<< /* DO NOT SUBMIT */ LOG(ERROR) << __FUNCTION__ << ": 
+nnoremap <C-U> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp<CR>
 
 nnoremap <leader>gd :term git diff %<CR>
 nnoremap <leader>ga :term git add -p %<CR>
 nnoremap <leader>gc :term git commit<CR>
 nnoremap <leader>gaa :term git add -p<CR>
+
+nnoremap <leader>hd :tabnew +:term\ hg\ diff\ % %<CR>i
+nnoremap <leader>hda :tabnew +:term\ hg\ diff<CR>i
+nnoremap <leader>ha :tabnew +:term\ hg\ amend\ -i\ % %<CR>i
+nnoremap <leader>haa :tabnew +:term\ hg\ amend\ -i<CR>i
+nnoremap <leader>hc :tabnew +:term\ hg\ commit\ -i\ % %<CR>i
+nnoremap <leader>hca :tabnew +:term\ hg\ commit\ -i<CR>i
 
 " The default diff colorscheme has foreground=background in some cases.
 if &diff
