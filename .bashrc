@@ -1,3 +1,18 @@
+# ==== FACEBOOK STUFF ====
+# .bashrc
+# bashrc is for aliases, functions, and shell configuration intended for use in
+# interactive shells.  However, in some circumstances, bash sources bashrc even
+# in non-interactive shells (e.g., when using scp), so it is standard practice
+# to check for interactivity at the top of .bashrc and return immediately if
+# the shell is not interactive.  The following line does that; don't remove it!
+[[ $- != *i* ]] && return
+
+# Load CentOS stuff and Facebook stuff (don't remove these lines).
+source /etc/bashrc
+source /usr/facebook/ops/rc/master.bashrc
+# ==== END FACEBOOK STUFF ====
+
+
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -122,7 +137,7 @@ fi
 
 alias open="xdg-open"
 export PATH=$HOME/.bin:$PATH
-export EDITOR=nvim
+export EDITOR=$HOME/.bin/nvim
 
 function calc() {
 python3 <<EOF
@@ -144,9 +159,9 @@ if [ -n "$DISPLAY" -a "$TERM" == 'xterm' ]; then
 fi
 
 ## Neovim
-alias vi=nvim
-alias vim=nvim
-alias view="nvim -R"
+alias vi=~/.bin/nvim
+alias vim=~/.bin/nvim
+alias view="~/.bin/nvim -R"
 
 ## Package management
 alias spip="sudo -H pip2"
@@ -156,3 +171,20 @@ alias clang-tidy="clang-tidy -checks=abseil-*"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+
+function save_agent {
+  env | grep SSH | sed s/=/=\"/ | sed s/$/\"/ > ~/.ssh_agent_info
+}
+
+function restore_agent {
+  source ~/.ssh_agent_info
+}
+
+
+function with-proxy {
+  (
+    export $(fwdproxy-config --format=sh curl)
+    export http_no_proxy=".fbcdn.net,.facebook.com,.thefacebook.com,.tfbnw.net,.fb.com,.fburl.com,.facebook.net,.sb.fbsbx.com,localhost"
+    "$@"
+  )
+}
