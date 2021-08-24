@@ -20,32 +20,42 @@ function link {
   fi
 }
 
-for file in $files; do
-  link "$file" "$HOME/$(basename $file)"
-done
+function link-all {
+  for file in $files; do
+    link "$file" "$HOME/$(basename $file)"
+  done
 
-mkdir -p ~/.config/nvim ~/.vim/{autoload,bundle,after/ftplugin/python}
-link ~/.vim/autoload ~/.config/nvim/autoload
-link ~/.vim/bundle ~/.config/nvim/bundle
-link ~/.vim/after ~/.config/nvim/after
-link $(readlink -f ./.vimrc) ~/.config/nvim/init.vim
-link $(readlink -f ./python.vim) ~/.config/nvim/after/ftplugin/python/python.vim
-link $(readlink -f bin) ~/.bin
-echo done
+  mkdir -p ~/.config/nvim ~/.vim/{autoload,bundle,after/ftplugin/python}
+  link ~/.vim/autoload ~/.config/nvim/autoload
+  link ~/.vim/bundle ~/.config/nvim/bundle
+  link ~/.vim/after ~/.config/nvim/after
+  link $(readlink -f ./.vimrc) ~/.config/nvim/init.vim
+  link $(readlink -f ./python.vim) ~/.config/nvim/after/ftplugin/python/python.vim
+  link $(readlink -f bin) ~/.bin
+  echo done
+}
 
-if [ ! -e ~/.vim/autoload/plug.vim ] ; then
-  echo 'installing vim-plug'
-  (
-    mkdir -p ~/.vim/autoload
-    cd ~/.vim/autoload
-    wget https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  )
-  # For clang-complete etc
-  sudo apt install python3-dev npm python3-pip git neovim tmux
-  nvim +PlugInstall
-else
-  echo 'vim-plug already installed'
-fi
+function install-packages {
+  echo 'installing packages...'
+  sudo dnf install python3-dev npm python3-pip git neovim tmux
+}
 
-echo 'final step: installing packages...'
-sudo apt install tmux neovim
+function install-vim-plugins {
+  echo 'installing vim plugins...'
+  if [ ! -e ~/.vim/autoload/plug.vim ] ; then
+    echo 'installing vim-plug'
+    (
+      mkdir -p ~/.vim/autoload
+      cd ~/.vim/autoload
+      wget https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    )
+    # For clang-complete etc
+    nvim +PlugInstall
+  else
+    echo 'vim-plug already installed'
+  fi
+}
+
+link-all
+install-packages
+install-vim-plugins

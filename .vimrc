@@ -7,7 +7,7 @@ set shell=/bin/bash
 
 set hidden
 
-call plug#begin('~/.vim/bundle')
+call plug#begin('~/.nvim/bundle')
 
 if has('nvim')
   Plug 'neovim/nvim-lspconfig'
@@ -21,6 +21,7 @@ Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
 Plug 'vim-airline/vim-airline'
+Plug 'scalameta/nvim-metals'
 call plug#end()
 call glaive#Install()
 filetype plugin indent on
@@ -105,7 +106,10 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
   buf_set_keymap("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 end
-nvim_lsp.clangd.setup{ on_attach = on_attach }  -- apt install clangd
+nvim_lsp.clangd.setup{
+  on_attach = on_attach,
+  cmd = { "/data/users/sagarm/fbsource/fbcode/third-party-buck/platform009/build/llvm-fb/9.0.0/bin/clangd" }
+}
 nvim_lsp.gopls.setup{ on_attach = on_attach } -- apt install gopls
 nvim_lsp.zls.setup{ on_attach = on_attach } -- https://github.com/zigtools/zls
 nvim_lsp.tsserver.setup{ on_attach = on_attach }  -- npm install -g typescript typescript-language-server
@@ -140,3 +144,8 @@ nvim_lsp.sumneko_lua.setup {
   },
 }
 EOF
+
+augroup lsp
+  au!
+  au FileType scala,sbt lua require("metals").initialize_or_attach({})
+augroup end

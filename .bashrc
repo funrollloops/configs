@@ -136,7 +136,7 @@ if ! shopt -oq posix; then
 fi
 
 alias open="xdg-open"
-export PATH=$HOME/.bin:$PATH
+export PATH=$HOME/.bin:$HOME/prefix/bin:$PATH
 export EDITOR=$HOME/.bin/nvim
 
 function calc() {
@@ -173,11 +173,11 @@ alias clang-tidy="clang-tidy -checks=abseil-*"
 
 
 function save_agent {
-  env | grep SSH | sed s/=/=\"/ | sed s/$/\"/ > ~/.ssh_agent_info
+  env | awk -F= '$1~/SSH/ { print "export " $1 "=\"" $2 "\"" }' > ~/.ssh_agent_info
 }
 
 function restore_agent {
-  source ~/.ssh_agent_info
+  [ -e ~/.ssh_agent_info ] && source ~/.ssh_agent_info
 }
 
 
@@ -188,3 +188,5 @@ function with-proxy {
     "$@"
   )
 }
+
+restore_agent

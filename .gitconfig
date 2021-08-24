@@ -1,0 +1,7 @@
+[user]
+name = Sagar Mittal
+email = sagarm@fb.com
+[gui]
+	recentrepo = /home/sagarm/f4d
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
