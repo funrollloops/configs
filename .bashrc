@@ -121,7 +121,7 @@ if ! shopt -oq posix; then
 fi
 
 alias open="xdg-open"
-export PATH=$HOME/.bin:$PATH
+export PATH=$HOME/.bin:$HOME/.cargo/bin:$PATH
 export EDITOR=nvim
 
 function calc() {

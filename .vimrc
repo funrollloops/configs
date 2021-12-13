@@ -129,4 +129,13 @@ nvim_lsp.sumneko_lua.setup {
     },
   },
 }
+nvim_lsp.rls.setup {
+  settings = {
+    rust = {
+      unstable_features = true,
+      build_on_save = false,
+      all_features = true,
+    },
+  },
+}
 EOF
