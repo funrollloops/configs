@@ -61,7 +61,7 @@ if &diff
 endif
 
 " Configure treesitter and LSP.
-lua << EOF
+lua <<EOF
 local nvim_lsp = require('lspconfig')
 
 -- Use an on_attach function to only map the following keys
@@ -138,4 +138,29 @@ nvim_lsp.rls.setup {
     },
   },
 }
+
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained",
+  sync_install = false,
+
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = false,
+  },
+  indent = {
+    enable = true
+  },
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "gnn",
+      node_incremental = "grn",
+      scope_incremental = "grc",
+      node_decremental = "grm",
+    },
+  },
+}
 EOF
+
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()

@@ -41,11 +41,11 @@ if [ ! -e ~/.vim/autoload/plug.vim ] ; then
     wget https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   )
   # For clang-complete etc
-  sudo apt install python3-dev npm python3-pip git neovim tmux
+  sudo apt install python3-dev npm python3-pip git tmux
   nvim +PlugInstall
 else
   echo 'vim-plug already installed'
 fi
 
 echo 'final step: installing packages...'
-sudo apt install tmux neovim
+sudo apt install tmux
