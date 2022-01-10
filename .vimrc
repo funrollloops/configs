@@ -103,6 +103,7 @@ nvim_lsp.vimls.setup{ on_attach = on_attach }  -- npm install -g vim-language-se
 nvim_lsp.pyright.setup{ on_attach = on_attach } -- npm install -g pyright
 nvim_lsp.sumneko_lua.setup {
   cmd = {"/home/sagarm/code/lua-language-server/bin/Linux/lua-language-server", "-E", "/home/sagarm/code/lua-language-server/main.lua"},
+  on_attach = on_attach,
   settings = {
     Lua = {
       runtime = {
@@ -130,6 +131,7 @@ nvim_lsp.sumneko_lua.setup {
   },
 }
 nvim_lsp.rls.setup {
+  on_attach = on_attach,
   settings = {
     rust = {
       unstable_features = true,
@@ -162,5 +164,6 @@ require'nvim-treesitter.configs'.setup {
 }
 EOF
 
-set foldmethod=expr
-set foldexpr=nvim_treesitter#foldexpr()
+" Tree-sitter based folding. I prefer indent-based for C++, Rust.
+" set foldmethod=expr
+" set foldexpr=nvim_treesitter#foldexpr()
