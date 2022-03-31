@@ -2,11 +2,11 @@
 
 set -e
 
-files=$(find . -maxdepth 1 -name '.*' -type f -not -name '*.swp' |
-  xargs -n1 readlink -f)
+files=$(find . -maxdepth 1 -name '.*' -type f -not -name '*.swp' \
+  -exec readlink -f {} \;)
 
 function run {
-  echo "=== $@"
+  echo "=== $*"
   "$@"
 }
 
@@ -59,7 +59,7 @@ function install_packages {
   if ((${#to_install[@]})); then
     run sudo apt install -y "${to_install[@]}"
   else
-    echo "apt packages already installed"
+    echo 'apt packages already installed'
   fi
 
   to_install=()
@@ -69,7 +69,7 @@ function install_packages {
   if ((${#to_install[@]})); then
     run sudo -H npm install -g "${to_install[@]}"
   else
-    echo "npm packages already installed"
+    echo 'npm packages already installed'
   fi
 }
 
@@ -88,18 +88,18 @@ function install_vim_plug {
 }
 
 for file in $files; do
-  link "$file" "$HOME/$(basename $file)"
+  link "$file" "$HOME/$(basename "$file")"
 done
 
 mkdir -p ~/.config/nvim ~/.vim/{autoload,bundle,after/ftplugin/python}
 link ~/.vim/autoload ~/.config/nvim/autoload
 link ~/.vim/bundle ~/.config/nvim/bundle
 link ~/.vim/after ~/.config/nvim/after
-link $(readlink -f ./yapf) ~/.config/yapf/style
-link $(readlink -f ./.vimrc) ~/.config/nvim/init.vim
-link $(readlink -f ./python.vim) ~/.config/nvim/after/ftplugin/python/python.vim
-link $(readlink -f bin) ~/.bin
-echo done installing symlinks
+link "$(readlink -f ./yapf)" ~/.config/yapf/style
+link "$(readlink -f ./.vimrc)" ~/.config/nvim/init.vim
+link "$(readlink -f ./python.vim)" ~/.config/nvim/after/ftplugin/python/python.vim
+link "$(readlink -f bin)" ~/.bin
+echo 'done installing symlinks'
 
 install_packages
 install_vim_plug
