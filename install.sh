@@ -73,6 +73,18 @@ function install_packages {
   fi
 }
 
+function install_nvim {
+  local DEST="$(dirname "${BASH_SOURCE[0]}")/bin/nvim"
+  if [ -e "${DEST}" ]; then
+    echo "nvim already installed"
+    return
+  fi
+  run curl -L \
+    https://github.com/neovim/neovim/releases/download/v0.6.1/nvim.appimage \
+    -o "${DEST}"
+  chmod u+x "${DEST}"
+}
+
 function install_vim_plug {
   if [ -e ~/.vim/autoload/plug.vim ]; then
     echo 'vim-plug already installed'
@@ -101,5 +113,6 @@ link "$(readlink -f ./python.vim)" ~/.config/nvim/after/ftplugin/python/python.v
 link "$(readlink -f bin)" ~/.bin
 echo 'done installing symlinks'
 
+install_nvim
 install_packages
 install_vim_plug
