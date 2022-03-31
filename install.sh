@@ -27,6 +27,15 @@ function link {
   fi
 }
 
+function generate_ssh_key {
+  if find ~/.ssh -name *.pub 2>/dev/null | grep -q .; then
+    echo 'ssh key exists'
+    return 0
+  fi
+  mkdir -p ~/.ssh
+  run ssh-keygen -t ed25519 -C "$(whoami)@$(hostname)"
+}
+
 function install_packages {
   local -a to_install
 
@@ -116,3 +125,4 @@ echo 'done installing symlinks'
 install_nvim
 install_packages
 install_vim_plug
+generate_ssh_key
