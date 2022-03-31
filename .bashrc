@@ -3,7 +3,7 @@
 # for examples
 
 if [[ -f /etc/bashrc ]]; then
-  . /etc/bashrc
+   . /etc/bashrc
 fi
 
 # If not running interactively, don't do anything
@@ -121,7 +121,7 @@ if ! shopt -oq posix; then
 fi
 
 alias open="xdg-open"
-export PATH=$HOME/.bin:$HOME/.cargo/bin:$PATH
+export PATH=$HOME/.bin:$HOME/.cargo/bin:$HOME/go/bin:$PATH
 export EDITOR=nvim
 
 function calc() {
@@ -153,6 +153,7 @@ alias spip="sudo -H pip2"
 alias spip3="sudo -H pip3"
 alias snpm="sudo -H npm"
 alias clang-tidy="clang-tidy -checks=abseil-*"
+alias pastebin="gh gist create"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 

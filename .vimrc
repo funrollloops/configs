@@ -18,10 +18,14 @@ Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
 Plug 'vim-airline/vim-airline'
+Plug 'tpope/vim-obsession'
 call plug#end()
 call glaive#Install()
 filetype plugin indent on
 
+if executable('rg')
+    set grepprg=rg\ --vimgrep
+endif
 
 set tabstop=2 softtabstop=2 shiftwidth=2
 set autoindent expandtab foldmethod=indent smarttab ruler
@@ -163,6 +167,8 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 EOF
+
+Glaive vim-codefmt yapf_executable=yapf3
 
 " Tree-sitter based folding. I prefer indent-based for C++, Rust.
 " set foldmethod=expr
