@@ -80,6 +80,15 @@ function install_packages {
   else
     echo 'npm packages already installed'
   fi
+
+  if ! command -v gh >/dev/null; then
+    mkdir -p download
+    (
+      cd download
+      curl -fLO https://github.com/cli/cli/releases/download/v2.7.0/gh_2.7.0_linux_amd64.deb
+      sudo dpkg -i gh_2.7.0_linux_amd64.deb
+    )
+  fi
 }
 
 function install_nvim {
@@ -88,7 +97,7 @@ function install_nvim {
     echo "nvim already installed"
     return
   fi
-  run curl -L \
+  run curl -fL \
     https://github.com/neovim/neovim/releases/download/v0.6.1/nvim.appimage \
     -o "${DEST}"
   chmod u+x "${DEST}"
