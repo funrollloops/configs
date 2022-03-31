@@ -15,6 +15,7 @@ function link {
   local dest=$2
   echo -ne "installing $src..."
   if [ ! -e "$dest" ]; then
+    mkdir -p "$(dirname "${dest}")"
     ln -s "$src" "$dest"
     echo ok
   elif [ "$(readlink -f "$dest")" != "$src" ]; then
@@ -94,6 +95,7 @@ mkdir -p ~/.config/nvim ~/.vim/{autoload,bundle,after/ftplugin/python}
 link ~/.vim/autoload ~/.config/nvim/autoload
 link ~/.vim/bundle ~/.config/nvim/bundle
 link ~/.vim/after ~/.config/nvim/after
+link $(readlink -f ./yapf) ~/.config/yapf/style
 link $(readlink -f ./.vimrc) ~/.config/nvim/init.vim
 link $(readlink -f ./python.vim) ~/.config/nvim/after/ftplugin/python/python.vim
 link $(readlink -f bin) ~/.bin
