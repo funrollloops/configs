@@ -168,7 +168,3 @@ require'nvim-treesitter.configs'.setup {
 EOF
 
 Glaive vim-codefmt yapf_executable=yapf3
-
-" Tree-sitter based folding. I prefer indent-based for C++, Rust.
-" set foldmethod=expr
-" set foldexpr=nvim_treesitter#foldexpr()

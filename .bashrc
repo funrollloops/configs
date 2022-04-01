@@ -154,6 +154,11 @@ alias spip3="sudo -H pip3"
 alias snpm="sudo -H npm"
 alias clang-tidy="clang-tidy -checks=abseil-*"
 alias pastebin="gh gist create"
+alias kubectl="minikube kubectl --"
+
+if command -v direnv 2> /dev/null; then
+  eval "$(direnv hook bash)"
+fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 

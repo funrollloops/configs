@@ -51,7 +51,7 @@ function install_packages {
   }
 
   for bin in npm ccache clang clangd clang-format lld tmux git nvim tree xclip \
-    ipython3 gopls shellcheck yapf3; do
+    ipython3 gopls shellcheck yapf3 direnv; do
     command_package "${bin}"
   done
   command_package rg ripgrep
