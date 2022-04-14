@@ -6,9 +6,12 @@ function save {
   local OUTPUT=${1:-/tmp/home.tar.zst.gpg}
   (
     cd ~ &&
-    tar --exclude .cache --exclude .local/share/Steam \
-      --exclude .config/google-chrome \
-      --exclude Downloads/ \
+    tar \
+      --exclude Downloads \
+      --exclude .local/share/Steam \
+      --exclude .cache \
+      --exclude .factorio \
+      --exclude .rustup \
       -cf - .
   ) |
     zstd -10 -T0 |
