@@ -1,0 +1,1 @@
+build --linkopt="-fuse-ld=lld" --keep_going --repo_env=CC=/usr/lib/ccache/clang --repo_env=CXX=/usr/lib/ccache/clang++ --sandbox_writable_path=/home/sagarm/.cache/ccache --sandbox_writable_path=/run/user/1000/ccache-tmp
