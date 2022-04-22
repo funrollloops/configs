@@ -85,8 +85,8 @@ function install_packages {
     mkdir -p download
     (
       cd download
-      curl -fLO https://github.com/cli/cli/releases/download/v2.7.0/gh_2.7.0_linux_amd64.deb
-      sudo dpkg -i gh_2.7.0_linux_amd64.deb
+      curl -fLO https://github.com/cli/cli/releases/download/v2.8.0/gh_2.8.0_linux_amd64.deb
+      sudo dpkg -i gh_2.8.0_linux_amd64.deb
     )
   fi
 }
