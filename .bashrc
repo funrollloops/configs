@@ -156,7 +156,7 @@ alias clang-tidy="clang-tidy -checks=abseil-*"
 alias pastebin="gh gist create"
 alias kubectl="minikube kubectl --"
 
-if command -v direnv 2> /dev/null; then
+if command -v direnv > /dev/null 2> /dev/null; then
   eval "$(direnv hook bash)"
 fi
 
