@@ -139,6 +139,10 @@ function notify {
   fi
 }
 
+function sync_ssh_agent_tmux {
+  eval $(tmux show-env -s | grep '^SSH_')
+}
+
 if [ -n "$DISPLAY" -a "$TERM" == 'xterm' ]; then
   export TERM=xterm-256color
 fi
