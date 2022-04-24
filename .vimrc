@@ -145,7 +145,7 @@ nvim_lsp.rls.setup {
 }
 
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained",
+  ensure_installed = {"c", "lua", "cpp", "bash", "go", "javascript", "typescript", "vim", "yaml"},
   sync_install = false,
 
   highlight = {
