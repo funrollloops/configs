@@ -64,7 +64,7 @@ fi
 
 if [ "$color_prompt" = yes ]; then
     . /usr/share/git-core/contrib/completion/git-prompt.sh 2> /dev/null
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(__git_ps1) \$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(venv_ps1)$(__git_ps1 " ⎇%s") \$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -143,6 +143,13 @@ function sync_ssh_agent_tmux {
   eval $(tmux show-env -s | grep '^SSH_')
 }
 
+function venv_ps1 {
+  if [ -z "${VIRTUAL_ENV}" ]; then
+    return
+  fi
+  echo " ε:$(realpath --relative-to=. "${VIRTUAL_ENV}")"
+}
+
 if [ -n "$DISPLAY" -a "$TERM" == 'xterm' ]; then
   export TERM=xterm-256color
 fi
@@ -164,5 +171,8 @@ if command -v direnv > /dev/null 2> /dev/null; then
   eval "$(direnv hook bash)"
 fi
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+if command -v rg > /dev/null 2> /dev/null; then
+  export FZF_DEFAULT_COMMAND='rg --files --hidden'
+fi
 
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
