@@ -55,7 +55,10 @@ function install_packages {
     command_package "${bin}"
   done
   command_package rg ripgrep
-  command_package python3 python3 python3-venv
+  command_package python3 python3
+  if ! python3 -m venv --help >/dev/null 2>/dev/null; then
+    to_install+=("python3-venv")
+  fi
   command_package python python-is-python3
   command_package pip3 python3-pip
   command_package ninja ninja-build
@@ -98,7 +101,7 @@ function install_nvim {
     return
   fi
   run curl -fL \
-    https://github.com/neovim/neovim/releases/download/v0.6.1/nvim.appimage \
+    https://github.com/neovim/neovim/releases/download/v0.7.0/nvim.appimage \
     -o "${DEST}"
   chmod u+x "${DEST}"
 }
