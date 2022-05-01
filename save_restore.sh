@@ -7,11 +7,13 @@ function save {
   (
     cd ~ &&
     tar \
+      --exclude .local/share/containers \
       --exclude Downloads \
       --exclude .local/share/Steam \
       --exclude .cache \
       --exclude .factorio \
       --exclude .rustup \
+      --exclude .steam \
       -cf - .
   ) |
     zstd -10 -T0 |
