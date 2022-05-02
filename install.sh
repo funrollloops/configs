@@ -5,6 +5,8 @@ set -e
 files=$(find . -maxdepth 1 -name '.*' -type f -not -name '*.swp' \
   -exec readlink -f {} \;)
 
+SCRIPT_DIR=$(dirname "${BASH_SOURCE[0]}")
+
 function run {
   echo "=== $*"
   "$@"
@@ -51,7 +53,7 @@ function install_packages {
   }
 
   for bin in npm ccache clang clangd clang-format lld tmux git nvim tree xclip \
-    ipython3 shellcheck yapf3 direnv curl podman gnome-session; do
+    ipython3 shellcheck yapf3 direnv curl podman gnome-session diffstat; do
     command_package "${bin}"
   done
   command_package rg ripgrep
@@ -95,20 +97,26 @@ function install_packages {
 }
 
 function install_nvim {
-  local DEST="$(dirname "${BASH_SOURCE[0]}")/bin/nvim"
+  local VERSION=0.7.0
+  local DEST="${SCRIPT_DIR}/bin/nvim-$VERSION"
   if [ -e "${DEST}" ]; then
-    echo "nvim already installed"
+    echo "nvim $VERSION already installed"
     return
+  else
+    echo "installing nvim $VERSION..."
   fi
   run curl -fL \
-    https://github.com/neovim/neovim/releases/download/v0.7.0/nvim.appimage \
+    "https://github.com/neovim/neovim/releases/download/v$VERSION/nvim.appimage" \
     -o "${DEST}"
   chmod u+x "${DEST}"
+  ln -sf "$(realpath "$DEST")" "${SCRIPT_DIR}/bin/nvim"
+  echo "OK"
 }
 
 function install_vim_plug {
   if [ -e ~/.vim/autoload/plug.vim ]; then
-    echo 'vim-plug already installed'
+    echo 'vim-plug already installed, updating'
+    run nvim +PlugUpdate
     return
   fi
   echo 'installing vim-plug'
@@ -134,7 +142,7 @@ link "$(readlink -f ./python.vim)" ~/.config/nvim/after/ftplugin/python/python.v
 link "$(readlink -f bin)" ~/.bin
 echo 'done installing symlinks'
 
+generate_ssh_key
 install_nvim
 install_packages
 install_vim_plug
-generate_ssh_key
