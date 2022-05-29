@@ -1,0 +1,7 @@
+[user]
+	email = sagar@sagarmittal.com
+	name = Sagar Mittal
+[init]
+	defaultBranch = main
+[core]
+	excludesfile = /home/sagarm/.gitignore
