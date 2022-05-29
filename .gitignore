@@ -1,0 +1,6 @@
+.cache
+env
+**/*.pyc
+.envrc
+compile_commands.json
+tags
