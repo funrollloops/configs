@@ -38,6 +38,24 @@ function generate_ssh_key {
   run ssh-keygen -t ed25519 -C "$(whoami)@$(hostname)"
 }
 
+function sys_pkg_install {
+  if command -v apt 2>/dev/null; then
+    run sudo apt install -y "$@"
+  elif command -v dnf 2>/dev/null; then
+    local -a PKGS
+    for pkg in "$@"; do
+      case "${pkg}" in
+        clangd) PKGS+=( clang-tools-extra ) ;;
+        clang-format) PKGS+=( clang-tools-extra ) ;;
+        shellcheck) PKGS+=( ShellCheck ) ;;
+        yapf3) PKGS+=( python3-yapf ) ;;
+        *) PKGS+=( "${pkg}" ) ;;
+      esac
+    done
+    run sudo dnf install -y "${PKGS[@]}"
+  fi
+}
+
 function install_packages {
   local -a to_install
 
@@ -52,8 +70,8 @@ function install_packages {
     fi
   }
 
-  for bin in npm ccache clang clangd clang-format lld tmux git nvim tree xclip \
-    ipython3 shellcheck yapf3 direnv curl podman gnome-session diffstat; do
+  for bin in npm ccache clang clangd clang-format lld tmux git tree xclip \
+    ipython3 shellcheck direnv curl podman gnome-session diffstat; do
     command_package "${bin}"
   done
   command_package rg ripgrep
@@ -66,14 +84,16 @@ function install_packages {
   command_package ninja ninja-build
   command_package go golang-go
   command_package ctags universal-ctags
-  if ! dpkg-query -s git-gui > /dev/null; then
+  if ! git gui version > /dev/null; then
     to_install+=(git-gui)
   fi
-
+  if ! command -v yapf && ! command -v yapf3; then
+    to_install+=(yapf3)
+  fi
   if ((${#to_install[@]})); then
-    run sudo apt install -y "${to_install[@]}"
+    sys_pkg_install "${to_install[@]}"
   else
-    echo 'apt packages already installed'
+    echo 'system packages already installed'
   fi
 
   to_install=()
@@ -85,15 +105,26 @@ function install_packages {
   else
     echo 'npm packages already installed'
   fi
+}
 
-  if ! command -v gh >/dev/null; then
-    mkdir -p download
-    (
-      cd download
-      curl -fLO https://github.com/cli/cli/releases/download/v2.8.0/gh_2.8.0_linux_amd64.deb
-      sudo dpkg -i gh_2.8.0_linux_amd64.deb
-    )
+function install_update_ghcli {
+  local VERSION=2.13.0
+  if gh version | grep -q "${VERSION}" 2>/dev/null; then
+    echo "gh cli already at v${VERSION}"
+    return
   fi
+  mkdir -p download
+  (
+    cd download
+    local ext=err
+    if command -v apt > /dev/null; then
+      ext=deb
+    elif command -v dnf > /dev/null; then
+      ext=rpm
+    fi
+    curl -fLO https://github.com/cli/cli/releases/download/v${VERSION}/gh_${VERSION}_linux_amd64.${ext}
+    sys_pkg_install ./gh_${VERSION}_linux_amd64.${ext}
+  )
 }
 
 function install_nvim {
@@ -145,4 +176,5 @@ echo 'done installing symlinks'
 generate_ssh_key
 install_nvim
 install_packages
+install_update_ghcli
 install_vim_plug
