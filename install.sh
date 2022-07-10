@@ -178,3 +178,10 @@ install_nvim
 install_packages
 install_update_ghcli
 install_vim_plug
+
+# Change mouse/touchpad settings.
+if command -v gsettings 2>/dev/null; then
+  gsettings set org.gnome.desktop.wm.preferences focus-mode sloppy
+  gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll false
+  gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
+fi
