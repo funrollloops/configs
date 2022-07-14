@@ -21,8 +21,8 @@ PROMPT_COMMAND="history -a"
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=25000
+HISTFILESIZE=25000000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -150,6 +150,10 @@ function venv_ps1 {
   echo " ε:$(realpath --relative-to=. "${VIRTUAL_ENV}")"
 }
 
+function to_gist {
+  "$@" | gh gist create -d "\$ $*"
+}
+
 if [ -n "$DISPLAY" -a "$TERM" == 'xterm' ]; then
   export TERM=xterm-256color
 fi
@@ -165,7 +169,6 @@ alias spip3="sudo -H pip3"
 alias snpm="sudo -H npm"
 alias clang-tidy="clang-tidy -checks=abseil-*"
 alias pastebin="gh gist create"
-alias kubectl="minikube kubectl --"
 
 if command -v direnv > /dev/null 2> /dev/null; then
   eval "$(direnv hook bash)"

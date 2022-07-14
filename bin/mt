@@ -1,0 +1,61 @@
+#!/bin/bash
+
+set -euf -o pipefail
+
+readonly ROOT=$(git rev-parse --show-toplevel)
+
+function mvn {
+  /usr/bin/mvn -f "${ROOT}" "$@"
+}
+
+function changed_files {
+  git diff "$(git merge-base origin/main HEAD)" --name-only
+}
+
+function cpp_build_dir {
+  ls -cC1 $(find "${ROOT}" -name compile_commands.json) | head -n1 | xargs -n1
+}
+
+function header_filter {
+  changed_files |
+    awk '
+      BEGIN{ first = 1; }
+
+      /[.]h(pp|xx)?/ {
+        if(!first){
+          printf "|";
+        }
+        n = split($0,f,"/");
+        printf"%s",f[n];
+        first=0;
+      }'
+}
+
+function tidy {
+  changed_files |
+    egrep '[.]c(pp|c|xx)?$' |
+    xargs -n1 -i{} -P50 \
+      icecc clang-tidy-12 -p "$(cpp_build_dir)" -header-filter="$(header_filter)" "${ROOT}/{}" 2>&1 |
+    egrep -v '^[0-9]+ warnings generated.|^Suppressed [0-9]+ warnings|^Use -header-filter='
+}
+
+function format {
+  changed_files |
+    egrep '[.][ch](pp|c|xx)?$' |
+    xargs -i{} -n1 -P$(nproc) clang-format-12 -i "${ROOT}/{}"
+}
+
+function main {
+  while [[ $# -gt 0 ]]; do
+    local CMD=$1
+    shift
+    case $CMD in
+      mvn)  mvn "$@" & break ;;
+      *) "$CMD" & ;;
+    esac
+  done
+  wait
+}
+
+
+main "$@"

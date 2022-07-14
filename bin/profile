@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -eufx -o pipefail
+
+OUTPUT="${HOME}/www/profiles/$(date +%Y%m%d_%H%M%S).svg"
+
+if [ "$(cat /proc/sys/kernel/kptr_restrict)" == "1" ]; then
+  echo 0 | sudo tee /proc/sys/kernel/kptr_restrict
+fi
+
+mkdir -p "$(dirname "${OUTPUT}")"
+perf record -F ${PERF_FREQ:-99} --call-graph=lbr -- "$@"
+perf script > /tmp/perf.script
+~/tools/FlameGraph/stackcollapse-perf.pl /tmp/perf.script | ~/tools/FlameGraph/flamegraph.pl > "${OUTPUT}"
+xdg-open "${OUTPUT}"

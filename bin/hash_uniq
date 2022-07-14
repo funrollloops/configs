@@ -1,0 +1,15 @@
+#!/usr/bin/env python3
+
+from sys import stdin
+from collections import defaultdict
+
+cnt = defaultdict(lambda: 0)
+
+for line in stdin:
+  cnt[line.strip()] += 1
+
+maxcnt = max(cnt.values())
+rjust = len(str(maxcnt))
+
+for key, val in sorted(cnt.items(), key=lambda i: i[1]):
+  print(str(val).rjust(rjust), key)
