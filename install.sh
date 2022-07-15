@@ -159,6 +159,13 @@ function install_vim_plug {
   run nvim +PlugInstall
 }
 
+function install_setcpu {
+  make -C src set-cpu
+  run sudo chown root src/set-cpu
+  run sudo chmod +s src/set-cpu
+  link "$(readlink -f src/set-cpu)" bin/set-cpu
+}
+
 for file in $files; do
   link "$file" "$HOME/$(basename "$file")"
 done
@@ -178,6 +185,7 @@ install_nvim
 install_packages
 install_update_ghcli
 install_vim_plug
+install_setcpu
 
 # Change mouse/touchpad settings.
 if command -v gsettings 2>/dev/null; then
