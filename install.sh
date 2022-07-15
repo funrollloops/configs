@@ -6,6 +6,7 @@ files=$(find . -maxdepth 1 -name '.*' -type f -not -name '*.swp' \
   -exec readlink -f {} \;)
 
 SCRIPT_DIR=$(dirname "${BASH_SOURCE[0]}")
+GH_CLI_VERSION=2.14.2
 
 function run {
   echo "=== $*"
@@ -30,7 +31,7 @@ function link {
 }
 
 function generate_ssh_key {
-  if find ~/.ssh -name *.pub 2>/dev/null | grep -q .; then
+  if find ~/.ssh -name \*.pub 2>/dev/null | grep -q .; then
     echo 'ssh key exists'
     return 0
   fi
@@ -108,9 +109,8 @@ function install_packages {
 }
 
 function install_update_ghcli {
-  local VERSION=2.13.0
-  if gh version | grep -q "${VERSION}" 2>/dev/null; then
-    echo "gh cli already at v${VERSION}"
+  if gh version | grep -q "${GH_CLI_VERSION}" 2>/dev/null; then
+    echo "gh cli already at v${GH_CLI_VERSION}"
     return
   fi
   mkdir -p download
@@ -122,8 +122,8 @@ function install_update_ghcli {
     elif command -v dnf > /dev/null; then
       ext=rpm
     fi
-    curl -fLO https://github.com/cli/cli/releases/download/v${VERSION}/gh_${VERSION}_linux_amd64.${ext}
-    sys_pkg_install ./gh_${VERSION}_linux_amd64.${ext}
+    curl -fLO https://github.com/cli/cli/releases/download/v${GH_CLI_VERSION}/gh_${GH_CLI_VERSION}_linux_amd64.${ext}
+    sys_pkg_install ./gh_${GH_CLI_VERSION}_linux_amd64.${ext}
   )
 }
 
@@ -147,7 +147,7 @@ function install_nvim {
 function install_vim_plug {
   if [ -e ~/.vim/autoload/plug.vim ]; then
     echo 'vim-plug already installed, updating'
-    run nvim +PlugUpdate
+    run nvim +PlugUpdate +qa
     return
   fi
   echo 'installing vim-plug'
@@ -156,7 +156,7 @@ function install_vim_plug {
     cd ~/.vim/autoload
     wget https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   )
-  run nvim +PlugInstall
+  run nvim +PlugInstall +qa
 }
 
 function install_setcpu {

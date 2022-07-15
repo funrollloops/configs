@@ -13,7 +13,8 @@ function changed_files {
 }
 
 function cpp_build_dir {
-  find "${ROOT}" -name compile_commands.json -print0 | xargs -0 -n100 ls -cC1 | head -n1 | xargs -n1
+  # Find most recently used build directory.
+  find "${ROOT}" -name .ninja_log -print0 | xargs -0 -n100 ls -cC1 | head -n1 | xargs -n1
 }
 
 function header_filter {
@@ -33,16 +34,16 @@ function header_filter {
 
 function tidy {
   changed_files |
-    egrep '[.]c(pp|c|xx)?$' |
+    grep -E '[.]c(pp|c|xx)?$' |
     xargs -n1 -i{} -P50 \
       icecc clang-tidy-12 -p "$(cpp_build_dir)" -header-filter="$(header_filter)" "${ROOT}/{}" 2>&1 |
-    egrep -v '^[0-9]+ warnings generated.|^Suppressed [0-9]+ warnings|^Use -header-filter='
+    grep -E -v '^[0-9]+ warnings generated.|^Suppressed [0-9]+ warnings|^Use -header-filter='
 }
 
 function format {
   changed_files |
-    egrep '[.][ch](pp|c|xx)?$' |
-    xargs -i{} -n1 -P$(nproc) clang-format-12 -i "${ROOT}/{}"
+    grep -E '[.][ch](pp|c|xx)?$' |
+    xargs -i{} -n1 -P"$(nproc)" clang-format-12 -i "${ROOT}/{}"
 }
 
 function main {
