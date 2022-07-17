@@ -37,6 +37,11 @@ set completeopt=menuone,longest,noselect
 syntax sync minlines=1000
 syntax on
 
+augroup golang
+  autocmd!
+  autocmd FileType go set noexpandtab
+augroup END
+
 let g:deoplete#enable_at_startup = 1
 let g:airline#extensions#tabline#enabled = 1
 
