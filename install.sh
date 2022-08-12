@@ -42,6 +42,13 @@ function _link {
   fi
 }
 
+function _have_command {
+  for cmd in "$@"; do
+    command -v "${cmd}" > /dev/null 2> /dev/null && return 0
+  done
+  return 1
+}
+
 function link_files {
   for file in $files; do
     _link "$file" "$HOME/$(basename "$file")"
@@ -68,9 +75,9 @@ function generate_ssh_key {
 }
 
 function sys_pkg_install {
-  if command -v apt 2> /dev/null; then
+  if _have_command apt; then
     _run sudo apt install -y "$@"
-  elif command -v dnf 2> /dev/null; then
+  elif _have_command dnf; then
     local -a PKGS
     for pkg in "$@"; do
       case "${pkg}" in
@@ -91,7 +98,7 @@ function install_packages {
   source ~/.bashrc
 
   function command_package {
-    if ! command -v "$1" > /dev/null; then
+    if ! _have_command "$1"; then
       if [[ "$#" -gt 1 ]]; then
         shift
       fi
@@ -116,7 +123,7 @@ function install_packages {
   if ! git gui version > /dev/null; then
     to_install+=(git-gui)
   fi
-  if ! command -v yapf && ! command -v yapf3; then
+  if ! _have_command yapf yapf3; then
     to_install+=(yapf3)
   fi
   if ((${#to_install[@]})); then
@@ -137,7 +144,7 @@ function install_packages {
 }
 
 function install_update_ghcli {
-  if command -v gh > /dev/null 2> /dev/null; then
+  if _have_command gh; then
     echo "gh cli already installed; will auto-update"
     return
   fi
@@ -145,9 +152,9 @@ function install_update_ghcli {
   (
     cd download
     local ext=err
-    if command -v apt > /dev/null; then
+    if _have_command apt; then
       ext=deb
-    elif command -v dnf > /dev/null; then
+    elif _have_command dnf; then
       ext=rpm
     fi
     curl -fLO https://github.com/cli/cli/releases/download/v${GH_CLI_VERSION}/gh_${GH_CLI_VERSION}_linux_amd64.${ext}
@@ -195,10 +202,13 @@ function install_setcpu {
 }
 
 function configure_mouse {
-  if command -v gsettings 2> /dev/null; then
+  if _have_command gsettings 2> /dev/null; then
+    echo "configuring focus-follows-mouse"
     gsettings set org.gnome.desktop.wm.preferences focus-mode sloppy
     gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll false
     gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
+  else
+    echo "skipping, no gsettings"
   fi
 }
 
