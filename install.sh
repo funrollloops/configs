@@ -8,12 +8,24 @@ files=$(find . -maxdepth 1 -name '.*' -type f -not -name '*.swp' \
 SCRIPT_DIR=$(dirname "${BASH_SOURCE[0]}")
 GH_CLI_VERSION=2.14.4
 
-function run {
+declare -a DEFAULT_COMMANDS
+DEFAULT_COMMANDS=(
+  link_files
+  generate_ssh_key
+  install_nvim
+  install_packages
+  install_update_ghcli
+  install_vim_plug
+  install_setcpu
+  configure_mouse
+)
+
+function _run {
   echo "=== $*"
   "$@"
 }
 
-function link {
+function _link {
   local src=$1
   local dest=$2
   echo -ne "installing $src..."
@@ -30,30 +42,46 @@ function link {
   fi
 }
 
+function link_files {
+  for file in $files; do
+    _link "$file" "$HOME/$(basename "$file")"
+  done
+
+  mkdir -p ~/.config/nvim ~/.vim/{autoload,bundle,after/ftplugin/python}
+  _link ~/.vim/autoload ~/.config/nvim/autoload
+  _link ~/.vim/bundle ~/.config/nvim/bundle
+  _link ~/.vim/after ~/.config/nvim/after
+  _link "$(readlink -f ./yapf)" ~/.config/yapf/style
+  _link "$(readlink -f ./.vimrc)" ~/.config/nvim/init.vim
+  _link "$(readlink -f ./python.vim)" ~/.config/nvim/after/ftplugin/python/python.vim
+  _link "$(readlink -f bin)" ~/.bin
+  echo 'done installing symlinks'
+}
+
 function generate_ssh_key {
-  if find ~/.ssh -name \*.pub 2>/dev/null | grep -q .; then
+  if find ~/.ssh -name \*.pub 2> /dev/null | grep -q .; then
     echo 'ssh key exists'
     return 0
   fi
   mkdir -p ~/.ssh
-  run ssh-keygen -t ed25519 -C "$(whoami)@$(hostname)"
+  _run ssh-keygen -t ed25519 -C "$(whoami)@$(hostname)"
 }
 
 function sys_pkg_install {
-  if command -v apt 2>/dev/null; then
-    run sudo apt install -y "$@"
-  elif command -v dnf 2>/dev/null; then
+  if command -v apt 2> /dev/null; then
+    _run sudo apt install -y "$@"
+  elif command -v dnf 2> /dev/null; then
     local -a PKGS
     for pkg in "$@"; do
       case "${pkg}" in
-        clangd) PKGS+=( clang-tools-extra ) ;;
-        clang-format) PKGS+=( clang-tools-extra ) ;;
-        shellcheck) PKGS+=( ShellCheck ) ;;
-        yapf3) PKGS+=( python3-yapf ) ;;
-        *) PKGS+=( "${pkg}" ) ;;
+        clangd) PKGS+=(clang-tools-extra) ;;
+        clang-format) PKGS+=(clang-tools-extra) ;;
+        shellcheck) PKGS+=(ShellCheck) ;;
+        yapf3) PKGS+=(python3-yapf) ;;
+        *) PKGS+=("${pkg}") ;;
       esac
     done
-    run sudo dnf install -y "${PKGS[@]}"
+    _run sudo dnf install -y "${PKGS[@]}"
   fi
 }
 
@@ -77,7 +105,7 @@ function install_packages {
   done
   command_package rg ripgrep
   command_package python3 python3
-  if ! python3 -m venv --help >/dev/null 2>/dev/null; then
+  if ! python3 -m venv --help > /dev/null 2> /dev/null; then
     to_install+=("python3-venv")
   fi
   command_package python python-is-python3
@@ -102,14 +130,14 @@ function install_packages {
   command_package tsc typescript typescript-language-server
   command_package vim-language-server
   if ((${#to_install[@]})); then
-    run sudo -H npm install -g "${to_install[@]}"
+    _run sudo -H npm install -g "${to_install[@]}"
   else
     echo 'npm packages already installed'
   fi
 }
 
 function install_update_ghcli {
-  if command -v gh >/dev/null 2>/dev/null; then
+  if command -v gh > /dev/null 2> /dev/null; then
     echo "gh cli already installed; will auto-update"
     return
   fi
@@ -136,7 +164,7 @@ function install_nvim {
   else
     echo "installing nvim $VERSION..."
   fi
-  run curl -fL \
+  _run curl -fL \
     "https://github.com/neovim/neovim/releases/download/v$VERSION/nvim.appimage" \
     -o "${DEST}"
   chmod u+x "${DEST}"
@@ -147,7 +175,7 @@ function install_nvim {
 function install_vim_plug {
   if [ -e ~/.vim/autoload/plug.vim ]; then
     echo 'vim-plug already installed, updating'
-    run nvim +PlugUpdate +qa
+    _run nvim +PlugUpdate +qa
     return
   fi
   echo 'installing vim-plug'
@@ -156,40 +184,32 @@ function install_vim_plug {
     cd ~/.vim/autoload
     wget https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   )
-  run nvim +PlugInstall +qa
+  _run nvim +PlugInstall +qa
 }
 
 function install_setcpu {
   make -C src set-cpu
-  run sudo chown root src/set-cpu
-  run sudo chmod +s src/set-cpu
-  link "$(readlink -f src/set-cpu)" bin/set-cpu
+  _run sudo chown root src/set-cpu
+  _run sudo chmod +s src/set-cpu
+  cp "$(readlink -f src/set-cpu)" bin/set-cpu
 }
 
-for file in $files; do
-  link "$file" "$HOME/$(basename "$file")"
-done
+function configure_mouse {
+  if command -v gsettings 2> /dev/null; then
+    gsettings set org.gnome.desktop.wm.preferences focus-mode sloppy
+    gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll false
+    gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
+  fi
+}
 
-mkdir -p ~/.config/nvim ~/.vim/{autoload,bundle,after/ftplugin/python}
-link ~/.vim/autoload ~/.config/nvim/autoload
-link ~/.vim/bundle ~/.config/nvim/bundle
-link ~/.vim/after ~/.config/nvim/after
-link "$(readlink -f ./yapf)" ~/.config/yapf/style
-link "$(readlink -f ./.vimrc)" ~/.config/nvim/init.vim
-link "$(readlink -f ./python.vim)" ~/.config/nvim/after/ftplugin/python/python.vim
-link "$(readlink -f bin)" ~/.bin
-echo 'done installing symlinks'
+function main {
+  for cmd in "$@"; do
+    _run "$cmd"
+  done
+}
 
-generate_ssh_key
-install_nvim
-install_packages
-install_update_ghcli
-install_vim_plug
-install_setcpu
-
-# Change mouse/touchpad settings.
-if command -v gsettings 2>/dev/null; then
-  gsettings set org.gnome.desktop.wm.preferences focus-mode sloppy
-  gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll false
-  gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true
+if [ "$#" == 0 ]; then
+  main "${DEFAULT_COMMANDS[@]}"
+else
+  main "$@"
 fi
