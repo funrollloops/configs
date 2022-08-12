@@ -1,1 +1,1 @@
-build --keep_going --fission yes
+build --linkopt="-fuse-ld=lld" --keep_going --fission yes
