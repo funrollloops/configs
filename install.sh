@@ -6,7 +6,7 @@ files=$(find . -maxdepth 1 -name '.*' -type f -not -name '*.swp' \
   -exec readlink -f {} \;)
 
 SCRIPT_DIR=$(dirname "${BASH_SOURCE[0]}")
-GH_CLI_VERSION=2.14.2
+GH_CLI_VERSION=2.14.4
 
 function run {
   echo "=== $*"
@@ -109,8 +109,8 @@ function install_packages {
 }
 
 function install_update_ghcli {
-  if gh version | grep -q "${GH_CLI_VERSION}" 2>/dev/null; then
-    echo "gh cli already at v${GH_CLI_VERSION}"
+  if command -v gh >/dev/null 2>/dev/null; then
+    echo "gh cli already installed; will auto-update"
     return
   fi
   mkdir -p download

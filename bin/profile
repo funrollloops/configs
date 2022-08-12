@@ -8,8 +8,12 @@ if [ "$(cat /proc/sys/kernel/kptr_restrict)" == "1" ]; then
   echo 0 | sudo tee /proc/sys/kernel/kptr_restrict
 fi
 
+if [ "$(cat /proc/sys/kernel/perf_event_paranoid)" == "4" ]; then
+  echo -1 | sudo tee /proc/sys/kernel/perf_event_paranoid
+fi
+
 mkdir -p "$(dirname "${OUTPUT}")"
-perf record -F ${PERF_FREQ:-99} --call-graph=lbr -- "$@"
+perf record -F "${PERF_FREQ:-99}" --call-graph=lbr -- "$@"
 perf script > /tmp/perf.script
 ~/tools/FlameGraph/stackcollapse-perf.pl /tmp/perf.script | ~/tools/FlameGraph/flamegraph.pl > "${OUTPUT}"
 xdg-open "${OUTPUT}"

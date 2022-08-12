@@ -19,6 +19,7 @@ Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
 Plug 'vim-airline/vim-airline'
 Plug 'tpope/vim-obsession'
+Plug 'airblade/vim-gitgutter'
 call plug#end()
 call glaive#Install()
 filetype plugin indent on
