@@ -72,6 +72,7 @@ function generate_ssh_key {
   fi
   mkdir -p ~/.ssh
   _run ssh-keygen -t ed25519 -C "$(whoami)@$(hostname)"
+  gh ssh-key add ~/.ssh/id_ed25519.pub
 }
 
 function sys_pkg_install {
