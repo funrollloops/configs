@@ -11,13 +11,13 @@ GH_CLI_VERSION=2.14.4
 declare -a DEFAULT_COMMANDS
 DEFAULT_COMMANDS=(
   link_files
-  generate_ssh_key
   install_nvim
   install_packages
   install_update_ghcli
-  install_vim_plug
-  install_setcpu
-  configure_mouse
+  generate_ssh_key  # requires ghcli
+  install_vim_plug  # requires nvim
+  install_setcpu # requires packages
+  configure_mouse  # requires packages (particularly gnome-session)
 )
 
 function _run {
