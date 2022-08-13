@@ -1,1 +1,5 @@
-build --linkopt="-fuse-ld=lld" --keep_going --fission yes
+build --linkopt="-fuse-ld=lld-14" --keep_going --fission yes --repo_env=CC=clang-14 --repo_env=CXX=clang++-14
+build:gcc --linkopt="-fuse-ld=lld" --keep_going --fission yes --repo_env=CC=gcc --repo_env=CXX=g++
+build:clang --linkopt="-fuse-ld=lld" --keep_going --fission yes --repo_env=CC=clang --repo_env=CXX=clang++
+build:clang14 --linkopt="-fuse-ld=lld-14" --keep_going --fission yes --repo_env=CC=clang-14 --repo_env=CXX=clang++-14
+build:clang12 --linkopt="-fuse-ld=lld-12" --keep_going --fission yes --repo_env=CC=clang-12 --repo_env=CXX=clang++-12

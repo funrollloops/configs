@@ -13,10 +13,10 @@ DEFAULT_COMMANDS=(
   link_files
   install_nvim
   install_packages
-  install_update_ghcli
-  generate_ssh_key  # requires ghcli
-  install_vim_plug  # requires nvim
-  install_setcpu # requires packages
+  install_ghcli
+  generate_ssh_key # requires ghcli
+  install_vim_plug # requires nvim
+  install_setcpu   # requires packages
   configure_mouse  # requires packages (particularly gnome-session)
 )
 
@@ -144,11 +144,7 @@ function install_packages {
   fi
 }
 
-function install_update_ghcli {
-  if _have_command gh; then
-    echo "gh cli already installed; will auto-update"
-    return
-  fi
+function reinstall_ghcli {
   mkdir -p download
   (
     cd download
@@ -161,6 +157,14 @@ function install_update_ghcli {
     curl -fLO https://github.com/cli/cli/releases/download/v${GH_CLI_VERSION}/gh_${GH_CLI_VERSION}_linux_amd64.${ext}
     sys_pkg_install ./gh_${GH_CLI_VERSION}_linux_amd64.${ext}
   )
+}
+
+function install_ghcli {
+  if _have_command gh; then
+    echo "gh cli already installed; will auto-update"
+    return
+  fi
+  reinstall_ghcli
 }
 
 function install_nvim {
@@ -197,9 +201,9 @@ function install_vim_plug {
 
 function install_setcpu {
   make -C src set-cpu
-  _run sudo chown root src/set-cpu
-  _run sudo chmod +s src/set-cpu
   cp "$(readlink -f src/set-cpu)" bin/set-cpu
+  _run sudo chown root bin/set-cpu
+  _run sudo chmod +s bin/set-cpu
 }
 
 function configure_mouse {
