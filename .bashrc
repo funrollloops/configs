@@ -169,6 +169,8 @@ alias spip3="sudo -H pip3"
 alias snpm="sudo -H npm"
 alias clang-tidy="clang-tidy -checks=abseil-*"
 alias pastebin="gh gist create"
+alias blaze=bazelisk
+alias bazel=bazelisk
 
 if command -v direnv > /dev/null 2> /dev/null; then
   eval "$(direnv hook bash)"

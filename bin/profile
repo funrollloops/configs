@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -eufx -o pipefail
+set -euf -o pipefail
 
 OUTPUT="${HOME}/www/profiles/$(date +%Y%m%d_%H%M%S).svg"
 
