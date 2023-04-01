@@ -6,7 +6,7 @@ files=$(find . -maxdepth 1 -name '.*' -type f -not -name '*.swp' \
   -exec readlink -f {} \;)
 
 SCRIPT_DIR=$(dirname "${BASH_SOURCE[0]}")
-GH_CLI_VERSION=2.14.4
+GH_CLI_VERSION=2.16.1
 
 declare -a DEFAULT_COMMANDS
 DEFAULT_COMMANDS=(
@@ -168,7 +168,7 @@ function install_ghcli {
 }
 
 function install_nvim {
-  local VERSION=0.7.0
+  local VERSION=0.8.3
   local DEST="${SCRIPT_DIR}/bin/nvim-$VERSION"
   if [ -e "${DEST}" ]; then
     echo "nvim $VERSION already installed"
