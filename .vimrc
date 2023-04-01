@@ -109,40 +109,10 @@ nvim_lsp.zls.setup{ on_attach = on_attach } -- https://github.com/zigtools/zls
 nvim_lsp.tsserver.setup{ on_attach = on_attach }  -- npm install -g typescript typescript-language-server
 nvim_lsp.vimls.setup{ on_attach = on_attach }  -- npm install -g vim-language-server
 nvim_lsp.pyright.setup{ on_attach = on_attach } -- npm install -g pyright
-nvim_lsp.sumneko_lua.setup {
-  cmd = {"/home/sagarm/code/lua-language-server/bin/Linux/lua-language-server", "-E", "/home/sagarm/code/lua-language-server/main.lua"},
-  on_attach = on_attach,
-  settings = {
-    Lua = {
-      runtime = {
-        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-        version = 'LuaJIT',
-        -- Setup your lua path
-        path = vim.split(package.path, ';'),
-      },
-      diagnostics = {
-        -- Get the language server to recognize the `vim` global
-        globals = {'vim'},
-      },
-      workspace = {
-        -- Make the server aware of Neovim runtime files
-        library = {
-          [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-          [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
-        },
-      },
-      -- Do not send telemetry data containing a randomized but unique identifier
-      telemetry = {
-        enable = false,
-      },
-    },
-  },
-}
 nvim_lsp.rls.setup {
   on_attach = on_attach,
   settings = {
     rust = {
-      unstable_features = true,
       build_on_save = false,
       all_features = true,
     },
