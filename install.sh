@@ -7,6 +7,7 @@ files=$(find . -maxdepth 1 -name '.*' -type f -not -name '*.swp' \
 
 SCRIPT_DIR=$(dirname "${BASH_SOURCE[0]}")
 GH_CLI_VERSION=2.16.1
+NVIM_VERSION=0.9.0
 
 declare -a DEFAULT_COMMANDS
 DEFAULT_COMMANDS=(
@@ -168,16 +169,15 @@ function install_ghcli {
 }
 
 function install_nvim {
-  local VERSION=0.8.3
-  local DEST="${SCRIPT_DIR}/bin/nvim-$VERSION"
+  local DEST="${SCRIPT_DIR}/bin/nvim-${NVIM_VERSION}"
   if [ -e "${DEST}" ]; then
-    echo "nvim $VERSION already installed"
+    echo "nvim ${NVIM_VERSION} already installed"
     return
   else
-    echo "installing nvim $VERSION..."
+    echo "installing nvim ${NVIM_VERSION}..."
   fi
   _run curl -fL \
-    "https://github.com/neovim/neovim/releases/download/v$VERSION/nvim.appimage" \
+    "https://github.com/neovim/neovim/releases/download/v${NVIM_VERSION}/nvim.appimage" \
     -o "${DEST}"
   chmod u+x "${DEST}"
   ln -sf "$(realpath "$DEST")" "${SCRIPT_DIR}/bin/nvim"
