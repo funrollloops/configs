@@ -187,16 +187,15 @@ function install_nvim {
 function install_vim_plug {
   if [ -e ~/.vim/autoload/plug.vim ]; then
     echo 'vim-plug already installed, updating'
-    _run nvim +PlugUpdate +qa
-    return
+  else
+    echo 'installing vim-plug'
+    (
+      mkdir -p ~/.vim/autoload
+      cd ~/.vim/autoload
+      wget https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    )
   fi
-  echo 'installing vim-plug'
-  (
-    mkdir -p ~/.vim/autoload
-    cd ~/.vim/autoload
-    wget https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  )
-  _run nvim +PlugInstall +qa
+  _run $(which nvim) +PlugInstall +TSUpdate +qa
 }
 
 function install_setcpu {
@@ -219,7 +218,16 @@ function configure_mouse {
 
 function main {
   for cmd in "$@"; do
-    _run "$cmd"
+    case "${cmd}" in
+      packages) _run install_packages ;;
+      ghcli) _run install_ghcli ;;
+      nvim) _run install_nvim ;;
+      vim-plug) _run install_vim_plug ;;
+      setcpu) _run install_setcpu ;;
+      mouse) _run configure_mouse ;;
+      ssh-key) _run generate_ssh_key ;;
+      *) _run "$cmd" ;;
+    esac
   done
 }
 
