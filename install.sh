@@ -6,7 +6,7 @@ files=$(find . -maxdepth 1 -name '.*' -type f -not -name '*.swp' \
   -exec readlink -f {} \;)
 
 SCRIPT_DIR=$(dirname "${BASH_SOURCE[0]}")
-GH_CLI_VERSION=2.16.1
+GH_CLI_VERSION=2.27.0
 NVIM_VERSION=0.9.0
 
 declare -a DEFAULT_COMMANDS
