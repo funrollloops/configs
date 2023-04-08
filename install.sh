@@ -109,7 +109,7 @@ function install_packages {
   }
 
   for bin in npm ccache clang clangd clang-format lld tmux git tree xclip \
-    ipython3 shellcheck direnv curl podman gnome-session diffstat; do
+    ipython3 shellcheck direnv curl podman gnome-session diffstat keychain; do
     command_package "${bin}"
   done
   command_package rg ripgrep
