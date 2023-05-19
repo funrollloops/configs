@@ -1,6 +1,12 @@
 .cache
-env
-**/*.pyc
-.envrc
 compile_commands.json
+env
+.envrc
+**/*.pyc
+**/*.bench.json
 tags
+.vscode
+bazel-bin
+bazel-native
+bazel-out
+bazel-test-logs

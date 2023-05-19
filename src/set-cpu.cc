@@ -33,6 +33,7 @@ std::string read_contents(const std::string& path) {
               << std::endl;
     exit(2);
   }
+  f.close();
   return buf.str();
 }
 
