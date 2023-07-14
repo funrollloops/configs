@@ -64,7 +64,7 @@ fi
 
 if [ "$color_prompt" = yes ]; then
     . /usr/share/git-core/contrib/completion/git-prompt.sh 2> /dev/null
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(venv_ps1)$(__git_ps1 " ⎇%s") \$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$(venv_ps1)$(__git_ps1 " ⎇ %s") \$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi

@@ -19,6 +19,7 @@ DEFAULT_COMMANDS=(
   install_vim_plug # requires nvim
   install_setcpu   # requires packages
   install_hibernate   # requires packages
+  update_tmux_plugins # requires packages
   configure_mouse  # requires packages (particularly gnome-session)
 )
 
@@ -217,6 +218,11 @@ function install_hibernate {
   fi
 }
 
+function update_tmux_plugins {
+  ~/.tmux/plugins/tpm/bin/install_plugins all
+  ~/.tmux/plugins/tpm/bin/update_plugins all
+}
+
 function configure_mouse {
   if _have_command gsettings 2> /dev/null; then
     echo "configuring focus-follows-mouse"
@@ -238,6 +244,7 @@ function main {
       setcpu) _run install_setcpu ;;
       hibernate) _run install_hibernate;;
       mouse) _run configure_mouse ;;
+      tmux) _run update_tmux_plugins ;;
       ssh-key) _run generate_ssh_key ;;
       *) _run "$cmd" ;;
     esac
