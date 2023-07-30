@@ -118,7 +118,7 @@ nvim_lsp.rls.setup {
     },
   },
 }
-nvim_lsp.bashls.setup{ cmd = {"/usr/local/bin/node", "/usr/local/bin/bash-language-server", "start" }, on_attach = on_attach }
+nvim_lsp.bashls.setup{ cmd = {"/usr/local/bin/bash-language-server", "start" }, on_attach = on_attach }
 
 require'nvim-treesitter.configs'.setup {
   ensure_installed = {"c", "lua", "cpp", "bash", "go", "javascript", "typescript", "vim", "yaml"},
