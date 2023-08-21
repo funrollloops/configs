@@ -18,6 +18,7 @@ DEFAULT_COMMANDS=(
   generate_ssh_key # requires ghcli
   install_vim_plug # requires nvim
   install_setcpu   # requires packages
+  install_hibernate   # requires packages
   configure_mouse  # requires packages (particularly gnome-session)
 )
 
@@ -200,9 +201,20 @@ function install_vim_plug {
 
 function install_setcpu {
   make -C src set-cpu
-  cp "$(readlink -f src/set-cpu)" bin/set-cpu
-  _run sudo chown root bin/set-cpu
-  _run sudo chmod +s bin/set-cpu
+  if ! diff -q src/set-cpu bin/set-cpu; then
+    cp "$(readlink -f src/set-cpu)" bin/set-cpu
+    _run sudo chown root bin/set-cpu
+    _run sudo chmod +s bin/set-cpu
+  fi
+}
+
+function install_hibernate {
+  make -C src hibernate
+  if ! diff -q src/hibernate bin/hibernate; then
+    cp "$(readlink -f src/hibernate)" bin/hibernate
+    _run sudo chown root bin/hibernate
+    _run sudo chmod +s bin/hibernate
+  fi
 }
 
 function configure_mouse {
@@ -224,6 +236,7 @@ function main {
       nvim) _run install_nvim ;;
       vim-plug) _run install_vim_plug ;;
       setcpu) _run install_setcpu ;;
+      hibernate) _run install_hibernate;;
       mouse) _run configure_mouse ;;
       ssh-key) _run generate_ssh_key ;;
       *) _run "$cmd" ;;
