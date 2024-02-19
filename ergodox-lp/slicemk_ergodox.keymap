@@ -6,8 +6,11 @@
 #include <dt-bindings/zmk/rgb.h>
 
 #define LAYER_MAIN 0
-#define LAYER_FN 1
-#define LAYER_NMPAD 2
+#define LAYER_MKBASE 1
+#define LAYER_MKNUM 2
+#define LAYER_MKFUN 3
+#define LAYER_MKSYM 4
+#define LAYER_MKNAV 5
 
 
 
@@ -17,40 +20,79 @@
 		layer_0 {
 			bindings = <
 				&bootloader
-				&kp GRAVE        &kp NUMBER_1 &kp NUMBER_2 &kp NUMBER_3   &kp NUMBER_4 &kp NUMBER_5     &kp PRINTSCREEN  &kp F10           &kp NUMBER_6 &kp NUMBER_7   &kp NUMBER_8    &kp NUMBER_9  &kp NUMBER_0    &kp BACKSPACE
-				&kp TAB          &kp Q        &kp W        &kp E          &kp R        &kp T            &kp MINUS        &kp EQUAL         &kp Y        &kp U          &kp I           &kp O         &kp P           &kp BACKSLASH
-				&kp ESCAPE       &kp A        &kp S        &kp D          &kp F        &kp G                                               &kp H        &kp J          &kp K           &kp L         &kp SEMICOLON   &kp SINGLE_QUOTE
-				&kp LEFT_SHIFT   &kp Z        &kp X        &kp C          &kp V        &kp B            &kp LEFT_BRACKET &kp RIGHT_BRACKET &kp N        &kp M          &kp COMMA       &kp PERIOD    &kp SLASH       &kp RIGHT_SHIFT
-				&kp LEFT_CONTROL &kp LC(B)    &kp LC(W)    &kp LEFT_ARROW &kp UP_ARROW                                                                  &kp DOWN_ARROW &kp RIGHT_ARROW &kp RIGHT_ALT &to LAYER_NMPAD &to LAYER_MAIN
-				                                                                       &kp DELETE       &kp HOME         &kp END           &kp INSERT
-				                                                          &kp LEFT_ALT &kp LEFT_CONTROL &kp PAGE_UP      &kp PAGE_DOWN     &kp RETURN   &kp SPACE
-				                                                                                        &kp LEFT_GUI     &mo LAYER_FN
+				&kp GRAVE      &kp NUMBER_1     &kp NUMBER_2     &kp NUMBER_3 &kp NUMBER_4 &kp NUMBER_5 &kp NUMBER_6     &kp PRINTSCREEN   &kp NUMBER_6    &kp NUMBER_7  &kp NUMBER_8   &kp NUMBER_9   &kp NUMBER_0  &kp BACKSPACE
+				&kp TAB        &kp Q            &kp W            &kp E        &kp R        &kp T        &kp MINUS        &kp EQUAL         &kp Y           &kp U         &kp I          &kp O          &kp P         &kp BACKSLASH
+				&kp CAPSLOCK   &kp A            &kp S            &kp D        &kp F        &kp G                                           &kp H           &kp J         &kp K          &kp L          &kp SEMICOLON &kp SINGLE_QUOTE
+				&kp LEFT_SHIFT &kp Z            &kp X            &kp C        &kp V        &kp B        &kp LEFT_BRACKET &kp RIGHT_BRACKET &kp N           &kp M         &kp COMMA      &kp PERIOD     &kp SLASH     &kp RIGHT_SHIFT
+				&to LAYER_MAIN &to LAYER_MKBASE &kp LEFT_CONTROL &kp LEFT_ALT &kp ESCAPE                                                                   &kp DELETE    &kp LEFT_ARROW &kp DOWN_ARROW &kp UP_ARROW  &kp RIGHT_ARROW
+				                                                                           &kp DELETE   &kp HOME         &kp END           &to LAYER_MKNUM
+				                                                              &kp SPACE    &kp TAB      &kp PAGE_UP      &kp PAGE_DOWN     &kp RETURN      &kp BACKSPACE
+				                                                                                        &kp LEFT_GUI     &mo LAYER_MKFUN
 			>;
 		};
 		layer_1 {
 			bindings = <
 				&bootloader
-				&bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4 &none  &none                &kp C_MUTE           &none  &none  &none  &none  &none           &bootloader
-				&out OUT_USB &kp F1       &kp F2       &kp F3       &kp F4       &kp F5 &kp C_VOLUME_DOWN    &kp C_VOLUME_UP      &kp F6 &kp F7 &kp F8 &kp F9 &kp F10         &none
-				&out OUT_BLE &kp F5       &kp F6       &kp F7       &kp F8       &none                                            &none  &none  &none  &none  &kp F11         &none
-				&none        &kp F9       &kp F10      &kp F11      &kp F12      &none  &kp C_BRIGHTNESS_DEC &kp C_BRIGHTNESS_INC &none  &none  &none  &none  &kp F12         &bt BT_CLR
-				&kp C_POWER  &none        &none        &none        &none                                                                &none  &none  &none  &to LAYER_NMPAD &to LAYER_MAIN
-				                                                                 &none  &none                &none                &none
-				                                                    &none        &none  &none                &none                &none  &none
-				                                                                        &none                &none
+				&kp GRAVE      &kp NUMBER_1     &kp NUMBER_2     &kp NUMBER_3       &kp NUMBER_4         &kp NUMBER_5        &kp NUMBER_6     &kp PRINTSCREEN   &kp NUMBER_6           &kp NUMBER_7              &kp NUMBER_8       &kp NUMBER_9   &kp NUMBER_0           &kp BACKSPACE
+				&kp TAB        &kp Q            &kp W            &kp E              &kp R                &kp T               &kp MINUS        &kp EQUAL         &kp Y                  &kp U                     &kp I              &kp O          &kp P                  &kp BACKSLASH
+				&kp CAPSLOCK   &mt LEFT_GUI A   &mt LEFT_ALT S   &mt LEFT_CONTROL D &mt LEFT_SHIFT F     &kp G                                                  &kp H                  &mt LEFT_SHIFT J          &mt LEFT_CONTROL K &mt LEFT_ALT L &mt LEFT_GUI SEMICOLON &kp SINGLE_QUOTE
+				&kp LEFT_SHIFT &kp Z            &kp X            &kp C              &kp V                &kp B               &kp LEFT_BRACKET &kp RIGHT_BRACKET &kp N                  &kp M                     &kp COMMA          &kp PERIOD     &kp SLASH              &kp RIGHT_SHIFT
+				&to LAYER_MAIN &to LAYER_MKBASE &kp LEFT_CONTROL &kp LEFT_ALT       &kp ESCAPE                                                                                         &lt LAYER_MKFUN DELETE    &kp LEFT_ARROW     &kp DOWN_ARROW &kp UP_ARROW           &kp RIGHT_ARROW
+				                                                                                         &kp DELETE          &kp HOME         &kp END           &to LAYER_MKNUM
+				                                                                    &mt LEFT_SHIFT SPACE &lt LAYER_MKNAV TAB &kp PAGE_UP      &kp PAGE_DOWN     &lt LAYER_MKSYM RETURN &lt LAYER_MKNUM BACKSPACE
+				                                                                                                             &kp LEFT_GUI     &mo LAYER_MKFUN
 			>;
 		};
 		layer_2 {
 			bindings = <
 				&bootloader
-				&none          &none     &none        &none          &none        &none            &none         &none        &none      &none          &none           &none         &none           &none
-				&kp TAB        &none     &none        &none          &none        &none            &none         &none        &none      &kp NUMBER_7   &kp NUMBER_8    &kp NUMBER_9  &none           &none
-				&kp ESCAPE     &kp SLASH &kp ASTERISK &kp MINUS      &kp PLUS     &none                                       &none      &kp NUMBER_4   &kp NUMBER_5    &kp NUMBER_6  &kp NUMBER_0    &kp BACKSPACE
-				&kp LEFT_SHIFT &none     &none        &none          &kp PERIOD   &none            &none         &none        &none      &kp NUMBER_1   &kp NUMBER_2    &kp NUMBER_3  &none           &none
-				&none          &kp LC(B) &kp LC(W)    &kp LEFT_ARROW &kp UP_ARROW                                                        &kp DOWN_ARROW &kp RIGHT_ARROW &kp RIGHT_ALT &to LAYER_NMPAD &to LAYER_MAIN
-				                                                                  &kp DELETE       &kp HOME      &kp END      &kp INSERT
-				                                                     &kp LEFT_ALT &kp LEFT_CONTROL &kp PAGE_DOWN &kp PAGE_UP  &kp RETURN &kp SPACE
-				                                                                                   &kp LEFT_GUI  &mo LAYER_FN
+				&none &none        &none            &none        &none            &none             &none &none &none &none          &none            &none          &none        &none
+				&none &kp GRAVE    &kp SINGLE_QUOTE &kp MINUS    &kp EQUAL        &kp BACKSLASH     &none &none &none &none          &none            &none          &none        &none
+				&none &kp NUMBER_6 &kp NUMBER_7     &kp NUMBER_8 &kp NUMBER_9     &kp NUMBER_0                  &none &kp LEFT_SHIFT &kp LEFT_CONTROL &kp LEFT_ALT   &kp LEFT_GUI &none
+				&none &kp NUMBER_1 &kp NUMBER_2     &kp NUMBER_3 &kp NUMBER_4     &kp NUMBER_5      &none &none &none &none          &none            &kp PERIOD     &none        &none
+				&none &none        &none            &none        &kp PERIOD                                           &none          &kp LEFT_ARROW   &kp DOWN_ARROW &kp UP_ARROW &kp RIGHT_ARROW
+				                                                                  &none             &none &none &none
+				                                                 &kp LEFT_BRACKET &kp RIGHT_BRACKET &none &none &none &none
+				                                                                                    &none &none
+			>;
+		};
+		layer_3 {
+			bindings = <
+				&bootloader
+				&none &none   &none   &none           &kp C_BRIGHTNESS_DEC &kt C_BRIGHTNESS_INC &none &none &none &none          &none            &none          &none        &none
+				&none &kp F11 &kp F12 &kp PRINTSCREEN &kp C_VOLUME_DOWN    &kp C_VOLUME_UP      &none &none &none &none          &none            &none          &none        &none
+				&none &kp F6  &kp F7  &kp F8          &kp F9               &kp F10                          &none &kp LEFT_SHIFT &kp LEFT_CONTROL &kp LEFT_ALT   &kp LEFT_GUI &none
+				&none &kp F1  &kp F2  &kp F3          &kp F4               &kp F5               &none &none &none &none          &none            &none          &kp SYSREQ   &none
+				&none &none   &none   &none           &kp K_APPLICATION                                           &none          &kp LEFT_ARROW   &kp DOWN_ARROW &kp UP_ARROW &kp RIGHT_ARROW
+				                                                           &none                &none &none &none
+				                                      &kp SPACE            &kp TAB              &none &none &none &none
+				                                                                                &none &none
+			>;
+		};
+		layer_4 {
+			bindings = <
+				&bootloader
+				&none &none           &none             &none          &none                &none                 &none &none &none &none          &none            &none          &none        &none
+				&none &kp TILDE       &kp DOUBLE_QUOTES &kp UNDERSCORE &kp PLUS             &kp PIPE              &none &none &none &none          &none            &none          &none        &none
+				&none &kp CARET       &kp AMPERSAND     &kp ASTERISK   &kp LEFT_PARENTHESIS &kp RIGHT_PARENTHESIS             &none &kp LEFT_SHIFT &kp LEFT_CONTROL &kp LEFT_ALT   &kp LEFT_GUI &none
+				&none &kp EXCLAMATION &kp AT_SIGN       &kp HASH       &kp DOLLAR           &kp PERCENT           &none &none &none &none          &none            &kp PERIOD     &none        &none
+				&none &none           &none             &none          &kp GREATER_THAN                                             &none          &kp LEFT_ARROW   &kp DOWN_ARROW &kp UP_ARROW &kp RIGHT_ARROW
+				                                                                            &none                 &none &none &none
+				                                                       &kp LEFT_BRACE       &kp RIGHT_BRACE       &none &none &none &none
+				                                                                                                  &none &none
+			>;
+		};
+		layer_5 {
+			bindings = <
+				&bootloader
+				&none &none         &none        &none            &none          &none         &none &none &none         &none          &none          &none        &none           &none
+				&none &none         &none        &none            &none          &none         &none &none &kp C_AC_REDO &kp C_AC_PASTE &kp C_AC_COPY  &kp C_AC_CUT &kp C_AC_UNDO   &none
+				&none &kp LEFT_GUI  &kp LEFT_ALT &kp LEFT_CONTROL &kp LEFT_SHIFT &none                     &kp CAPSLOCK  &kp LEFT_ARROW &kp DOWN_ARROW &kp UP_ARROW &kp RIGHT_ARROW &none
+				&none &kp C_AC_UNDO &kp C_AC_CUT &kp C_AC_COPY    &kp C_AC_PASTE &kp C_AC_REDO &none &none &kp INSERT    &kp HOME       &kp PAGE_DOWN  &kp PAGE_UP  &kp END         &none
+				&none &none         &none        &none            &none                                                  &kp DELETE     &none          &none        &none           &none
+				                                                                 &none         &none &none &none
+				                                                  &none          &none         &none &none &kp RETURN    &kp BACKSPACE
+				                                                                               &none &none
 			>;
 		};
 	};
