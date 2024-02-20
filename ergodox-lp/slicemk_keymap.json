@@ -3307,7 +3307,7 @@
 			]
 		}
 	],
-	"Custom": "/ {\n  behaviors {\n    hm: home_row_mod {\n      compatible = \"zmk,behavior-hold-tap\";\n      #binding-cells = <2>;\n      flavor = \"balanced\";\n      tapping-term-ms = <240>;\n      quick-tap-ms = <175>;\n      require-prior-idle-ms = <150>;\n      bindings = <&kp>, <&kp>;\n      hold-trigger-on-release;\n    };\n  };\n};\n",
+	"Custom": "/ {\n  behaviors {\n    hm: home_row_mod {\n      compatible = \"zmk,behavior-hold-tap\";\n      #binding-cells = <2>;\n      flavor = \"balanced\";\n      tapping-term-ms = <220>;\n      quick-tap-ms = <175>;\n      require-prior-idle-ms = <150>;\n      bindings = <&kp>, <&kp>;\n      hold-trigger-on-release;\n    };\n  };\n};\n",
 	"Advanced": {
 		"Logging": ""
 	}
