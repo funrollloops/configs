@@ -852,46 +852,40 @@
 				},
 				{
 					"Name": "",
-					"Behavior": "&kp",
+					"Behavior": "&none",
+					"Notes": "",
+					"Args": []
+				},
+				{
+					"Name": "",
+					"Behavior": "$custom",
 					"Notes": "",
 					"Args": [
-						"CAPSLOCK"
+						"&hm LGUI A"
 					]
 				},
 				{
 					"Name": "",
-					"Behavior": "&mt",
+					"Behavior": "$custom",
 					"Notes": "",
 					"Args": [
-						"LEFT_GUI",
-						"A"
+						"&hm LALT S"
 					]
 				},
 				{
 					"Name": "",
-					"Behavior": "&mt",
+					"Behavior": "$custom",
 					"Notes": "",
 					"Args": [
-						"LEFT_ALT",
-						"S"
+						"&hm LCTRL D"
 					]
 				},
 				{
 					"Name": "",
-					"Behavior": "&mt",
+					"Behavior": "$custom",
 					"Notes": "",
 					"Args": [
-						"LEFT_CONTROL",
-						"D"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&mt",
-					"Notes": "",
-					"Args": [
-						"LEFT_SHIFT",
-						"F"
+						"&hm LSHFT F"
 					]
 				},
 				{
@@ -912,38 +906,34 @@
 				},
 				{
 					"Name": "",
-					"Behavior": "&mt",
+					"Behavior": "$custom",
 					"Notes": "",
 					"Args": [
-						"LEFT_SHIFT",
-						"J"
+						"&hm LSHFT J"
 					]
 				},
 				{
 					"Name": "",
-					"Behavior": "&mt",
+					"Behavior": "$custom",
 					"Notes": "",
 					"Args": [
-						"LEFT_CONTROL",
-						"K"
+						"&hm LCTRL  K"
 					]
 				},
 				{
 					"Name": "",
-					"Behavior": "&mt",
+					"Behavior": "$custom",
 					"Notes": "",
 					"Args": [
-						"LEFT_ALT",
-						"L"
+						"&hm LALT L"
 					]
 				},
 				{
 					"Name": "",
-					"Behavior": "&mt",
+					"Behavior": "$custom",
 					"Notes": "",
 					"Args": [
-						"LEFT_GUI",
-						"SEMICOLON"
+						"&hm LGUI SEMICOLON"
 					]
 				},
 				{
@@ -3318,5 +3308,5 @@
 			]
 		}
 	],
-	"Custom": ""
+	"Custom": "/ {\n  behaviors {\n    hm: home_row_mod {\n      compatible = \"zmk,behavior-hold-tap\";\n      #binding-cells = <2>;\n      flavor = \"balanced\";\n      tapping-term-ms = <280>;\n      quick-tap-ms = <175>;\n      require-prior-idle-ms = <150>;\n      bindings = <&kp>, <&kp>;\n      hold-trigger-on-release;\n    };\n  };\n};\n"
 }
