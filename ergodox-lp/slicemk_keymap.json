@@ -9,620 +9,6 @@
 	},
 	"Layers": [
 		{
-			"Name": "main",
-			"Notes": "",
-			"Keys": [
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"GRAVE"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"NUMBER_1"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"NUMBER_2"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"NUMBER_3"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"NUMBER_4"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"NUMBER_5"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"NUMBER_6"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"PRINTSCREEN"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"NUMBER_6"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"NUMBER_7"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"NUMBER_8"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"NUMBER_9"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"NUMBER_0"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"BACKSPACE"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"TAB"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"Q"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"W"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"E"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"R"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"T"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"MINUS"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"EQUAL"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"Y"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"U"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"I"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"O"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"P"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"BACKSLASH"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"CAPSLOCK"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"A"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"S"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"D"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"F"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"G"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"H"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"J"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"K"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"L"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"SEMICOLON"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"SINGLE_QUOTE"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"LEFT_SHIFT"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"Z"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"X"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"C"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"V"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"B"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"LEFT_BRACKET"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"RIGHT_BRACKET"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"N"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"M"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"COMMA"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"PERIOD"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"SLASH"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"RIGHT_SHIFT"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&to",
-					"Notes": "",
-					"Args": [
-						"main"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&to",
-					"Notes": "",
-					"Args": [
-						"mk-base"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"LEFT_CONTROL"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"LEFT_ALT"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"ESCAPE"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"DELETE"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"LEFT_ARROW"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"DOWN_ARROW"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"UP_ARROW"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"RIGHT_ARROW"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"DELETE"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"HOME"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"END"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&to",
-					"Notes": "",
-					"Args": [
-						"mk-num"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"SPACE"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"TAB"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"PAGE_UP"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"PAGE_DOWN"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"RETURN"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"BACKSPACE"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"LEFT_GUI"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&mo",
-					"Notes": "",
-					"Args": [
-						"mk-fun"
-					]
-				}
-			]
-		},
-		{
 			"Name": "mk-base",
 			"Notes": "",
 			"Keys": [
@@ -1217,6 +603,620 @@
 					"Notes": "",
 					"Args": [
 						"mk-num",
+						"BACKSPACE"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"LEFT_GUI"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&mo",
+					"Notes": "",
+					"Args": [
+						"mk-fun"
+					]
+				}
+			]
+		},
+		{
+			"Name": "main",
+			"Notes": "",
+			"Keys": [
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"GRAVE"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"NUMBER_1"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"NUMBER_2"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"NUMBER_3"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"NUMBER_4"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"NUMBER_5"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"NUMBER_6"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"PRINTSCREEN"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"NUMBER_6"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"NUMBER_7"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"NUMBER_8"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"NUMBER_9"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"NUMBER_0"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"BACKSPACE"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"TAB"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"Q"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"W"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"E"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"R"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"T"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"MINUS"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"EQUAL"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"Y"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"U"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"I"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"O"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"P"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"BACKSLASH"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"CAPSLOCK"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"A"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"S"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"D"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"F"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"G"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"H"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"J"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"K"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"L"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"SEMICOLON"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"SINGLE_QUOTE"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"LEFT_SHIFT"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"Z"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"X"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"C"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"V"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"B"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"LEFT_BRACKET"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"RIGHT_BRACKET"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"N"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"M"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"COMMA"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"PERIOD"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"SLASH"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"RIGHT_SHIFT"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&to",
+					"Notes": "",
+					"Args": [
+						"main"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&to",
+					"Notes": "",
+					"Args": [
+						"mk-base"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"LEFT_CONTROL"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"LEFT_ALT"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"ESCAPE"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"DELETE"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"LEFT_ARROW"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"DOWN_ARROW"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"UP_ARROW"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"RIGHT_ARROW"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"DELETE"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"HOME"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"END"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&to",
+					"Notes": "",
+					"Args": [
+						"mk-num"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"SPACE"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"TAB"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"PAGE_UP"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"PAGE_DOWN"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"RETURN"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
 						"BACKSPACE"
 					]
 				},
@@ -2939,7 +2939,7 @@
 					"Behavior": "&kp",
 					"Notes": "",
 					"Args": [
-						"C_AC_PASTE"
+						"LEFT_CONTROL V"
 					]
 				},
 				{
@@ -2947,7 +2947,7 @@
 					"Behavior": "&kp",
 					"Notes": "",
 					"Args": [
-						"C_AC_COPY"
+						"LEFT_CONTROL C"
 					]
 				},
 				{
@@ -2955,7 +2955,7 @@
 					"Behavior": "&kp",
 					"Notes": "",
 					"Args": [
-						"C_AC_CUT"
+						"LEFT_CONTROL X"
 					]
 				},
 				{
@@ -2963,7 +2963,7 @@
 					"Behavior": "&kp",
 					"Notes": "",
 					"Args": [
-						"C_AC_UNDO"
+						"LEFT_CONTROL Z"
 					]
 				},
 				{
@@ -3073,7 +3073,7 @@
 					"Behavior": "&kp",
 					"Notes": "",
 					"Args": [
-						"C_AC_UNDO"
+						"LEFT_CONTROL Z"
 					]
 				},
 				{
@@ -3081,7 +3081,7 @@
 					"Behavior": "&kp",
 					"Notes": "",
 					"Args": [
-						"C_AC_CUT"
+						"LEFT_CONTROL X"
 					]
 				},
 				{
@@ -3089,7 +3089,7 @@
 					"Behavior": "&kp",
 					"Notes": "",
 					"Args": [
-						"C_AC_COPY"
+						"LEFT_CONTROL C"
 					]
 				},
 				{
@@ -3097,7 +3097,7 @@
 					"Behavior": "&kp",
 					"Notes": "",
 					"Args": [
-						"C_AC_PASTE"
+						"LEFT_CONTROL V"
 					]
 				},
 				{
@@ -3105,7 +3105,7 @@
 					"Behavior": "&kp",
 					"Notes": "",
 					"Args": [
-						"C_AC_REDO"
+						"LEFT_CONTROL Y"
 					]
 				},
 				{
@@ -3307,5 +3307,8 @@
 			]
 		}
 	],
-	"Custom": "/ {\n  behaviors {\n    hm: home_row_mod {\n      compatible = \"zmk,behavior-hold-tap\";\n      #binding-cells = <2>;\n      flavor = \"balanced\";\n      tapping-term-ms = <280>;\n      quick-tap-ms = <175>;\n      require-prior-idle-ms = <150>;\n      bindings = <&kp>, <&kp>;\n      hold-trigger-on-release;\n    };\n  };\n};\n"
+	"Custom": "/ {\n  behaviors {\n    hm: home_row_mod {\n      compatible = \"zmk,behavior-hold-tap\";\n      #binding-cells = <2>;\n      flavor = \"balanced\";\n      tapping-term-ms = <240>;\n      quick-tap-ms = <175>;\n      require-prior-idle-ms = <150>;\n      bindings = <&kp>, <&kp>;\n      hold-trigger-on-release;\n    };\n  };\n};\n",
+	"Advanced": {
+		"Logging": ""
+	}
 }
