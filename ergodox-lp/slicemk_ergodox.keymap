@@ -47,14 +47,14 @@
 		layer_1 {
 			bindings = <
 				&bootloader
-				&kp GRAVE      &kp NUMBER_1     &kp NUMBER_2     &kp NUMBER_3 &kp NUMBER_4         &kp NUMBER_5        &kp NUMBER_6     &kp PRINTSCREEN   &kp NUMBER_6           &kp NUMBER_7              &kp NUMBER_8   &kp NUMBER_9   &kp NUMBER_0       &kp BACKSPACE
-				&kp TAB        &kp Q            &kp W            &kp E        &kp R                &kp T               &kp MINUS        &kp EQUAL         &kp Y                  &kp U                     &kp I          &kp O          &kp P              &kp BACKSLASH
-				&none          &hm LGUI A       &hm LALT S       &hm LCTRL D  &hm LSHFT F          &kp G                                                  &kp H                  &hm LSHFT J               &hm LCTRL  K   &hm LALT L     &hm LGUI SEMICOLON &kp SINGLE_QUOTE
-				&kp LEFT_SHIFT &kp Z            &kp X            &kp C        &kp V                &kp B               &kp LEFT_BRACKET &kp RIGHT_BRACKET &kp N                  &kp M                     &kp COMMA      &kp PERIOD     &kp SLASH          &kp RIGHT_SHIFT
-				&to LAYER_MAIN &to LAYER_MKBASE &kp LEFT_CONTROL &kp LEFT_ALT &kp ESCAPE                                                                                         &lt LAYER_MKFUN DELETE    &kp LEFT_ARROW &kp DOWN_ARROW &kp UP_ARROW       &kp RIGHT_ARROW
-				                                                                                   &kp DELETE          &kp HOME         &kp END           &to LAYER_MKNUM
-				                                                              &mt LEFT_SHIFT SPACE &lt LAYER_MKNAV TAB &kp PAGE_UP      &kp PAGE_DOWN     &lt LAYER_MKSYM RETURN &lt LAYER_MKNUM BACKSPACE
-				                                                                                                       &kp LEFT_GUI     &mo LAYER_MKFUN
+				&kp GRAVE      &kp NUMBER_1     &kp NUMBER_2     &kp NUMBER_3 &kp NUMBER_4     &kp NUMBER_5        &kp NUMBER_6     &kp PRINTSCREEN   &kp NUMBER_6           &kp NUMBER_7              &kp NUMBER_8   &kp NUMBER_9   &kp NUMBER_0       &kp BACKSPACE
+				&kp TAB        &kp Q            &kp W            &kp E        &kp R            &kp T               &kp MINUS        &kp EQUAL         &kp Y                  &kp U                     &kp I          &kp O          &kp P              &kp BACKSLASH
+				&none          &hm LGUI A       &hm LALT S       &hm LCTRL D  &hm LSHFT F      &kp G                                                  &kp H                  &hm LSHFT J               &hm LCTRL  K   &hm LALT L     &hm LGUI SEMICOLON &kp SINGLE_QUOTE
+				&kp LEFT_SHIFT &kp Z            &kp X            &kp C        &kp V            &kp B               &kp LEFT_BRACKET &kp RIGHT_BRACKET &kp N                  &kp M                     &kp COMMA      &kp PERIOD     &kp SLASH          &kp RIGHT_SHIFT
+				&to LAYER_MAIN &to LAYER_MKBASE &kp LEFT_CONTROL &kp LEFT_ALT &kp ESCAPE                                                                                     &lt LAYER_MKFUN DELETE    &kp LEFT_ARROW &kp DOWN_ARROW &kp UP_ARROW       &kp RIGHT_ARROW
+				                                                                               &kp DELETE          &kp HOME         &kp END           &to LAYER_MKNUM
+				                                                              &hm LSHIFT SPACE &lt LAYER_MKNAV TAB &kp PAGE_UP      &kp PAGE_DOWN     &lt LAYER_MKSYM RETURN &lt LAYER_MKNUM BACKSPACE
+				                                                                                                   &kp LEFT_GUI     &mo LAYER_MKFUN
 			>;
 		};
 		layer_2 {

@@ -1171,11 +1171,10 @@
 				},
 				{
 					"Name": "",
-					"Behavior": "&mt",
+					"Behavior": "$custom",
 					"Notes": "",
 					"Args": [
-						"LEFT_SHIFT",
-						"SPACE"
+						"&hm LSHIFT SPACE"
 					]
 				},
 				{
