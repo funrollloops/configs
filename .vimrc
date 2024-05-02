@@ -48,6 +48,8 @@ let g:deoplete#enable_at_startup = 1
 let g:airline#extensions#tabline#enabled = 1
 
 nnoremap <leader>m :make<CR>
+nnoremap <leader>r :e %<CR>
+nnoremap <leader>rr :e! %<CR>
 vnoremap <leader>s :sort<CR>
 nnoremap <leader>ss :syntax sync fromStart<CR>
 vnoremap <leader>f :FormatLines<CR>
