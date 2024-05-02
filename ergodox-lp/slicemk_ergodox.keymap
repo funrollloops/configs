@@ -34,26 +34,26 @@
 		layer_0 {
 			bindings = <
 				&bootloader
-				&kp GRAVE      &kp NUMBER_1     &kp NUMBER_2     &kp NUMBER_3 &kp NUMBER_4     &kp NUMBER_5        &kp NUMBER_6     &kp PRINTSCREEN   &kp NUMBER_6           &kp NUMBER_7              &kp NUMBER_8   &kp NUMBER_9   &kp NUMBER_0       &kp BACKSPACE
-				&kp TAB        &kp Q            &kp W            &kp E        &kp R            &kp T               &kp MINUS        &kp EQUAL         &kp Y                  &kp U                     &kp I          &kp O          &kp P              &kp BACKSLASH
-				&none          &hm LGUI A       &hm LALT S       &hm LCTRL D  &hm LSHFT F      &kp G                                                  &kp H                  &hm LSHFT J               &hm LCTRL  K   &hm LALT L     &hm LGUI SEMICOLON &kp SINGLE_QUOTE
-				&kp LEFT_SHIFT &kp Z            &kp X            &kp C        &kp V            &kp B               &kp LEFT_BRACKET &kp RIGHT_BRACKET &kp N                  &kp M                     &kp COMMA      &kp PERIOD     &kp SLASH          &kp RIGHT_SHIFT
-				&to LAYER_MAIN &to LAYER_MKBASE &kp LEFT_CONTROL &kp LEFT_ALT &kp ESCAPE                                                                                     &lt LAYER_MKFUN DELETE    &kp LEFT_ARROW &kp DOWN_ARROW &kp UP_ARROW       &kp RIGHT_ARROW
+				&kp GRAVE      &kp NUMBER_1     &kp NUMBER_2     &kp NUMBER_3 &kp NUMBER_4     &kp NUMBER_5        &kp NUMBER_6     &kp NUMBER_7      &kp NUMBER_8              &kp NUMBER_9           &kp NUMBER_0   &kp MINUS      &kp EQUAL          &kp BACKSPACE
+				&kp TAB        &kp Q            &kp W            &kp E        &kp R            &kp T               &kp MINUS        &kp EQUAL         &kp Y                     &kp U                  &kp I          &kp O          &kp P              &kp BACKSLASH
+				&kp CAPSLOCK   &hm LGUI A       &hm LALT S       &hm LCTRL D  &hm LSHFT F      &kp G                                                  &kp H                     &hm LSHFT J            &hm LCTRL  K   &hm LALT L     &hm LGUI SEMICOLON &kp SINGLE_QUOTE
+				&kp LEFT_SHIFT &kp Z            &kp X            &kp C        &kp V            &kp B               &kp LEFT_BRACKET &kp RIGHT_BRACKET &kp N                     &kp M                  &kp COMMA      &kp PERIOD     &kp SLASH          &mo LAYER_MKNUM
+				&to LAYER_MAIN &to LAYER_MKBASE &kp LEFT_CONTROL &kp LEFT_ALT &kp ESCAPE                                                                                        &lt LAYER_MKFUN DELETE &kp LEFT_ARROW &kp DOWN_ARROW &kp UP_ARROW       &kp RIGHT_ARROW
 				                                                                               &kp DELETE          &kp HOME         &kp END           &to LAYER_MKNUM
-				                                                              &hm LSHIFT SPACE &lt LAYER_MKNAV TAB &kp PAGE_UP      &kp PAGE_DOWN     &lt LAYER_MKSYM RETURN &lt LAYER_MKNUM BACKSPACE
+				                                                              &hm LSHIFT SPACE &lt LAYER_MKNAV TAB &kp PAGE_UP      &kp PAGE_DOWN     &lt LAYER_MKSYM BACKSPACE &lt LAYER_MKNUM RETURN
 				                                                                                                   &kp LEFT_GUI     &mo LAYER_MKFUN
 			>;
 		};
 		layer_1 {
 			bindings = <
 				&bootloader
-				&kp GRAVE      &kp NUMBER_1     &kp NUMBER_2     &kp NUMBER_3 &kp NUMBER_4 &kp NUMBER_5 &kp NUMBER_6     &kp PRINTSCREEN   &kp NUMBER_6    &kp NUMBER_7  &kp NUMBER_8   &kp NUMBER_9   &kp NUMBER_0  &kp BACKSPACE
-				&kp TAB        &kp Q            &kp W            &kp E        &kp R        &kp T        &kp MINUS        &kp EQUAL         &kp Y           &kp U         &kp I          &kp O          &kp P         &kp BACKSLASH
-				&kp CAPSLOCK   &kp A            &kp S            &kp D        &kp F        &kp G                                           &kp H           &kp J         &kp K          &kp L          &kp SEMICOLON &kp SINGLE_QUOTE
-				&kp LEFT_SHIFT &kp Z            &kp X            &kp C        &kp V        &kp B        &kp LEFT_BRACKET &kp RIGHT_BRACKET &kp N           &kp M         &kp COMMA      &kp PERIOD     &kp SLASH     &kp RIGHT_SHIFT
-				&to LAYER_MAIN &to LAYER_MKBASE &kp LEFT_CONTROL &kp LEFT_ALT &kp ESCAPE                                                                   &kp DELETE    &kp LEFT_ARROW &kp DOWN_ARROW &kp UP_ARROW  &kp RIGHT_ARROW
+				&kp GRAVE      &kp NUMBER_1     &kp NUMBER_2     &kp NUMBER_3 &kp NUMBER_4 &kp NUMBER_5 &kp NUMBER_6     &kp NUMBER_7      &kp NUMBER_8    &kp NUMBER_9 &kp NUMBER_0   &kp MINUS      &kp EQUAL     &kp BACKSPACE
+				&kp TAB        &kp Q            &kp W            &kp E        &kp R        &kp T        &kp MINUS        &kp EQUAL         &kp Y           &kp U        &kp I          &kp O          &kp P         &kp BACKSLASH
+				&kp CAPSLOCK   &kp A            &kp S            &kp D        &kp F        &kp G                                           &kp H           &kp J        &kp K          &kp L          &kp SEMICOLON &kp SINGLE_QUOTE
+				&kp LEFT_SHIFT &kp Z            &kp X            &kp C        &kp V        &kp B        &kp LEFT_BRACKET &kp RIGHT_BRACKET &kp N           &kp M        &kp COMMA      &kp PERIOD     &kp SLASH     &kp RIGHT_SHIFT
+				&to LAYER_MAIN &to LAYER_MKBASE &kp LEFT_CONTROL &kp LEFT_ALT &kp ESCAPE                                                                   &kp DELETE   &kp LEFT_ARROW &kp DOWN_ARROW &kp UP_ARROW  &kp RIGHT_ARROW
 				                                                                           &kp DELETE   &kp HOME         &kp END           &to LAYER_MKNUM
-				                                                              &kp SPACE    &kp TAB      &kp PAGE_UP      &kp PAGE_DOWN     &kp RETURN      &kp BACKSPACE
+				                                                              &kp SPACE    &kp TAB      &kp PAGE_UP      &kp PAGE_DOWN     &kp BACKSPACE   &kp RETURN
 				                                                                                        &kp LEFT_GUI     &mo LAYER_MKFUN
 			>;
 		};
@@ -73,42 +73,41 @@
 		layer_3 {
 			bindings = <
 				&bootloader
-				&none &none   &none   &none           &kp C_BRIGHTNESS_DEC &kt C_BRIGHTNESS_INC &none &none &none &none          &none            &none          &none        &none
-				&none &kp F11 &kp F12 &kp PRINTSCREEN &kp C_VOLUME_DOWN    &kp C_VOLUME_UP      &none &none &none &none          &none            &none          &none        &none
-				&none &kp F6  &kp F7  &kp F8          &kp F9               &kp F10                          &none &kp LEFT_SHIFT &kp LEFT_CONTROL &kp LEFT_ALT   &kp LEFT_GUI &none
-				&none &kp F1  &kp F2  &kp F3          &kp F4               &kp F5               &none &none &none &none          &none            &none          &kp SYSREQ   &none
-				&none &none   &none   &none           &kp K_APPLICATION                                           &none          &kp LEFT_ARROW   &kp DOWN_ARROW &kp UP_ARROW &kp RIGHT_ARROW
-				                                                           &none                &none &none &none
-				                                      &kp SPACE            &kp TAB              &none &none &none &none
-				                                                                                &none &none
+				&none       &none      &none   &none           &kp C_BRIGHTNESS_DEC &kt C_BRIGHTNESS_INC &none &none &none &none          &none            &none          &none        &none
+				&none       &kp F11    &kp F12 &kp PRINTSCREEN &kp C_VOLUME_DOWN    &kp C_VOLUME_UP      &none &none &none &none          &none            &none          &none        &none
+				&none       &kp F6     &kp F7  &kp F8          &kp F9               &kp F10                          &none &kp LEFT_SHIFT &kp LEFT_CONTROL &kp LEFT_ALT   &kp LEFT_GUI &none
+				&none       &kp F1     &kp F2  &kp F3          &kp F4               &kp F5               &none &none &none &none          &none            &none          &kp SYSREQ   &none
+				&bootloader &sys_reset &none   &none           &kp K_APPLICATION                                           &none          &kp LEFT_ARROW   &kp DOWN_ARROW &kp UP_ARROW &kp RIGHT_ARROW
+				                                                                    &none                &none &none &none
+				                                               &kp SPACE            &kp TAB              &none &none &none &none
+				                                                                                         &none &none
 			>;
 		};
 		layer_4 {
 			bindings = <
 				&bootloader
-				&none &none           &none             &none          &none                &none                 &none &none &none &none          &none            &none          &none        &none
-				&none &kp TILDE       &kp DOUBLE_QUOTES &kp UNDERSCORE &kp PLUS             &kp PIPE              &none &none &none &none          &none            &none          &none        &none
-				&none &kp CARET       &kp AMPERSAND     &kp ASTERISK   &kp LEFT_PARENTHESIS &kp RIGHT_PARENTHESIS             &none &kp LEFT_SHIFT &kp LEFT_CONTROL &kp LEFT_ALT   &kp LEFT_GUI &none
-				&none &kp EXCLAMATION &kp AT_SIGN       &kp HASH       &kp DOLLAR           &kp PERCENT           &none &none &none &none          &none            &kp PERIOD     &none        &none
-				&none &none           &none             &none          &kp GREATER_THAN                                             &none          &kp LEFT_ARROW   &kp DOWN_ARROW &kp UP_ARROW &kp RIGHT_ARROW
-				                                                                            &none                 &none &none &none
-				                                                       &kp LEFT_BRACE       &kp RIGHT_BRACE       &none &none &none &none
-				                                                                                                  &none &none
+				&none &kp EXCLAMATION &kp AT_SIGN       &kp HASH       &kp DOLLAR           &kp PERCENT           &kp CARET &kp AMPERSAND &kp ASTERISK &kp LEFT_PARENTHESIS &kp RIGHT_PARENTHESIS &kp UNDERSCORE &kp PLUS     &kp BACKSPACE
+				&none &kp TILDE       &kp DOUBLE_QUOTES &kp UNDERSCORE &kp PLUS             &kp PIPE              &none     &none         &none        &none                &none                 &none          &none        &none
+				&none &kp CARET       &kp AMPERSAND     &kp ASTERISK   &kp LEFT_PARENTHESIS &kp RIGHT_PARENTHESIS                         &none        &kp LEFT_SHIFT       &kp LEFT_CONTROL      &kp LEFT_ALT   &kp LEFT_GUI &none
+				&none &kp EXCLAMATION &kp AT_SIGN       &kp HASH       &kp DOLLAR           &kp PERCENT           &none     &none         &none        &none                &none                 &kp PERIOD     &none        &none
+				&none &none           &none             &none          &kp GREATER_THAN                                                                &none                &kp LEFT_ARROW        &kp DOWN_ARROW &kp UP_ARROW &kp RIGHT_ARROW
+				                                                                            &none                 &none     &none         &none
+				                                                       &kp LEFT_BRACE       &kp RIGHT_BRACE       &none     &none         &none        &none
+				                                                                                                  &none     &none
 			>;
 		};
 		layer_5 {
 			bindings = <
 				&bootloader
-				&none &none        &none        &none            &none          &none     &none &none &none         &none          &none          &none        &none           &none
-				&none &none        &none        &none            &none          &none     &none &none &kp C_AC_REDO &kp LC(V)      &kp LC(C)      &kp LC(X)    &kp LC(Z)       &none
-				&none &kp LEFT_GUI &kp LEFT_ALT &kp LEFT_CONTROL &kp LEFT_SHIFT &none                 &kp CAPSLOCK  &kp LEFT_ARROW &kp DOWN_ARROW &kp UP_ARROW &kp RIGHT_ARROW &none
-				&none &kp LC(Z)    &kp LC(X)    &kp LC(C)        &kp LC(V)      &kp LC(Y) &none &none &kp INSERT    &kp HOME       &kp PAGE_DOWN  &kp PAGE_UP  &kp END         &none
-				&none &none        &none        &none            &none                                              &kp DELETE     &none          &none        &none           &none
-				                                                                &none     &none &none &none
-				                                                 &none          &none     &none &none &kp RETURN    &kp BACKSPACE
-				                                                                          &none &none
+				&none        &none        &none        &none            &none          &none     &none &none &none          &none          &none           &none            &none             &kp BACKSPACE
+				&kp TAB      &kp LC(Q)    &kp LC(W)    &kp LC(E)        &kp LC(R)      &kp LC(T) &none &none &kp NUMBER_0   &kp LEFT_BRACE &kp RIGHT_BRACE &kp LEFT_BRACKET &kp RIGHT_BRACKET &kp DOLLAR
+				&kp CAPSLOCK &kp LEFT_GUI &kp LEFT_ALT &kp LEFT_CONTROL &kp LEFT_SHIFT &kp LC(G)             &kp LEFT_ARROW &kp DOWN_ARROW &kp UP_ARROW    &kp RIGHT_ARROW  &kp RIGHT_ARROW   &none
+				&caps_word   &kp LC(Z)    &kp LC(X)    &kp LC(C)        &kp LC(V)      &kp LC(B) &none &none &kp HOME       &kp PAGE_DOWN  &kp PAGE_UP     &kp END          &kp END           &none
+				&none        &none        &none        &none            &none                                               &kp DELETE     &msc SCRL_LEFT  &msc SCRL_DOWN   &msc SCRL_UP      &msc SCRL_RIGHT
+				                                                                       &none     &none &none &none
+				                                                        &none          &none     &none &none &kp BACKSPACE  &kp RETURN
+				                                                                                 &none &none
 			>;
 		};
 	};
-
 };

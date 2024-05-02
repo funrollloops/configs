@@ -73,22 +73,6 @@
 					"Behavior": "&kp",
 					"Notes": "",
 					"Args": [
-						"PRINTSCREEN"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"NUMBER_6"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
 						"NUMBER_7"
 					]
 				},
@@ -114,6 +98,22 @@
 					"Notes": "",
 					"Args": [
 						"NUMBER_0"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"MINUS"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"EQUAL"
 					]
 				},
 				{
@@ -238,9 +238,11 @@
 				},
 				{
 					"Name": "",
-					"Behavior": "&none",
+					"Behavior": "&kp",
 					"Notes": "",
-					"Args": []
+					"Args": [
+						"CAPSLOCK"
+					]
 				},
 				{
 					"Name": "",
@@ -436,10 +438,10 @@
 				},
 				{
 					"Name": "",
-					"Behavior": "&kp",
+					"Behavior": "&mo",
 					"Notes": "",
 					"Args": [
-						"RIGHT_SHIFT"
+						"mk-num"
 					]
 				},
 				{
@@ -594,7 +596,7 @@
 					"Notes": "",
 					"Args": [
 						"mk-sym",
-						"RETURN"
+						"BACKSPACE"
 					]
 				},
 				{
@@ -603,7 +605,7 @@
 					"Notes": "",
 					"Args": [
 						"mk-num",
-						"BACKSPACE"
+						"RETURN"
 					]
 				},
 				{
@@ -689,22 +691,6 @@
 					"Behavior": "&kp",
 					"Notes": "",
 					"Args": [
-						"PRINTSCREEN"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"NUMBER_6"
-					]
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
 						"NUMBER_7"
 					]
 				},
@@ -730,6 +716,22 @@
 					"Notes": "",
 					"Args": [
 						"NUMBER_0"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"MINUS"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"EQUAL"
 					]
 				},
 				{
@@ -1209,7 +1211,7 @@
 					"Behavior": "&kp",
 					"Notes": "",
 					"Args": [
-						"RETURN"
+						"BACKSPACE"
 					]
 				},
 				{
@@ -1217,7 +1219,7 @@
 					"Behavior": "&kp",
 					"Notes": "",
 					"Args": [
-						"BACKSPACE"
+						"RETURN"
 					]
 				},
 				{
@@ -2128,13 +2130,13 @@
 				},
 				{
 					"Name": "",
-					"Behavior": "&none",
+					"Behavior": "&bootloader",
 					"Notes": "",
 					"Args": []
 				},
 				{
 					"Name": "",
-					"Behavior": "&none",
+					"Behavior": "&sys_reset",
 					"Notes": "",
 					"Args": []
 				},
@@ -2286,81 +2288,107 @@
 				},
 				{
 					"Name": "",
-					"Behavior": "&none",
+					"Behavior": "&kp",
 					"Notes": "",
-					"Args": []
+					"Args": [
+						"EXCLAMATION"
+					]
 				},
 				{
 					"Name": "",
-					"Behavior": "&none",
+					"Behavior": "&kp",
 					"Notes": "",
-					"Args": []
+					"Args": [
+						"AT_SIGN"
+					]
 				},
 				{
 					"Name": "",
-					"Behavior": "&none",
+					"Behavior": "&kp",
 					"Notes": "",
-					"Args": []
+					"Args": [
+						"HASH"
+					]
 				},
 				{
 					"Name": "",
-					"Behavior": "&none",
+					"Behavior": "&kp",
 					"Notes": "",
-					"Args": []
+					"Args": [
+						"DOLLAR"
+					]
 				},
 				{
 					"Name": "",
-					"Behavior": "&none",
+					"Behavior": "&kp",
 					"Notes": "",
-					"Args": []
+					"Args": [
+						"PERCENT"
+					]
 				},
 				{
 					"Name": "",
-					"Behavior": "&none",
+					"Behavior": "&kp",
 					"Notes": "",
-					"Args": []
+					"Args": [
+						"CARET"
+					]
 				},
 				{
 					"Name": "",
-					"Behavior": "&none",
+					"Behavior": "&kp",
 					"Notes": "",
-					"Args": []
+					"Args": [
+						"AMPERSAND"
+					]
 				},
 				{
 					"Name": "",
-					"Behavior": "&none",
+					"Behavior": "&kp",
 					"Notes": "",
-					"Args": []
+					"Args": [
+						"ASTERISK"
+					]
 				},
 				{
 					"Name": "",
-					"Behavior": "&none",
+					"Behavior": "&kp",
 					"Notes": "",
-					"Args": []
+					"Args": [
+						"LEFT_PARENTHESIS"
+					]
 				},
 				{
 					"Name": "",
-					"Behavior": "&none",
+					"Behavior": "&kp",
 					"Notes": "",
-					"Args": []
+					"Args": [
+						"RIGHT_PARENTHESIS"
+					]
 				},
 				{
 					"Name": "",
-					"Behavior": "&none",
+					"Behavior": "&kp",
 					"Notes": "",
-					"Args": []
+					"Args": [
+						"UNDERSCORE"
+					]
 				},
 				{
 					"Name": "",
-					"Behavior": "&none",
+					"Behavior": "&kp",
 					"Notes": "",
-					"Args": []
+					"Args": [
+						"PLUS"
+					]
 				},
 				{
 					"Name": "",
-					"Behavior": "&none",
+					"Behavior": "&kp",
 					"Notes": "",
-					"Args": []
+					"Args": [
+						"BACKSPACE"
+					]
 				},
 				{
 					"Name": "",
@@ -2874,45 +2902,59 @@
 				},
 				{
 					"Name": "",
-					"Behavior": "&none",
+					"Behavior": "&kp",
 					"Notes": "",
-					"Args": []
+					"Args": [
+						"BACKSPACE"
+					]
 				},
 				{
 					"Name": "",
-					"Behavior": "&none",
+					"Behavior": "&kp",
 					"Notes": "",
-					"Args": []
+					"Args": [
+						"TAB"
+					]
 				},
 				{
 					"Name": "",
-					"Behavior": "&none",
+					"Behavior": "&kp",
 					"Notes": "",
-					"Args": []
+					"Args": [
+						"LEFT_CONTROL Q"
+					]
 				},
 				{
 					"Name": "",
-					"Behavior": "&none",
+					"Behavior": "&kp",
 					"Notes": "",
-					"Args": []
+					"Args": [
+						"LEFT_CONTROL W"
+					]
 				},
 				{
 					"Name": "",
-					"Behavior": "&none",
+					"Behavior": "&kp",
 					"Notes": "",
-					"Args": []
+					"Args": [
+						"LEFT_CONTROL E"
+					]
 				},
 				{
 					"Name": "",
-					"Behavior": "&none",
+					"Behavior": "&kp",
 					"Notes": "",
-					"Args": []
+					"Args": [
+						"LEFT_CONTROL R"
+					]
 				},
 				{
 					"Name": "",
-					"Behavior": "&none",
+					"Behavior": "&kp",
 					"Notes": "",
-					"Args": []
+					"Args": [
+						"LEFT_CONTROL T"
+					]
 				},
 				{
 					"Name": "",
@@ -2931,7 +2973,7 @@
 					"Behavior": "&kp",
 					"Notes": "",
 					"Args": [
-						"C_AC_REDO"
+						"NUMBER_0"
 					]
 				},
 				{
@@ -2939,7 +2981,7 @@
 					"Behavior": "&kp",
 					"Notes": "",
 					"Args": [
-						"LEFT_CONTROL V"
+						"LEFT_BRACE"
 					]
 				},
 				{
@@ -2947,7 +2989,7 @@
 					"Behavior": "&kp",
 					"Notes": "",
 					"Args": [
-						"LEFT_CONTROL C"
+						"RIGHT_BRACE"
 					]
 				},
 				{
@@ -2955,7 +2997,7 @@
 					"Behavior": "&kp",
 					"Notes": "",
 					"Args": [
-						"LEFT_CONTROL X"
+						"LEFT_BRACKET"
 					]
 				},
 				{
@@ -2963,20 +3005,24 @@
 					"Behavior": "&kp",
 					"Notes": "",
 					"Args": [
-						"LEFT_CONTROL Z"
+						"RIGHT_BRACKET"
 					]
 				},
 				{
 					"Name": "",
-					"Behavior": "&none",
+					"Behavior": "&kp",
 					"Notes": "",
-					"Args": []
+					"Args": [
+						"DOLLAR"
+					]
 				},
 				{
 					"Name": "",
-					"Behavior": "&none",
+					"Behavior": "&kp",
 					"Notes": "",
-					"Args": []
+					"Args": [
+						"CAPSLOCK"
+					]
 				},
 				{
 					"Name": "",
@@ -3012,16 +3058,10 @@
 				},
 				{
 					"Name": "",
-					"Behavior": "&none",
-					"Notes": "",
-					"Args": []
-				},
-				{
-					"Name": "",
 					"Behavior": "&kp",
 					"Notes": "",
 					"Args": [
-						"CAPSLOCK"
+						"LEFT_CONTROL G"
 					]
 				},
 				{
@@ -3058,13 +3098,21 @@
 				},
 				{
 					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"RIGHT_ARROW"
+					]
+				},
+				{
+					"Name": "",
 					"Behavior": "&none",
 					"Notes": "",
 					"Args": []
 				},
 				{
 					"Name": "",
-					"Behavior": "&none",
+					"Behavior": "&caps_word",
 					"Notes": "",
 					"Args": []
 				},
@@ -3105,7 +3153,7 @@
 					"Behavior": "&kp",
 					"Notes": "",
 					"Args": [
-						"LEFT_CONTROL Y"
+						"LEFT_CONTROL B"
 					]
 				},
 				{
@@ -3119,14 +3167,6 @@
 					"Behavior": "&none",
 					"Notes": "",
 					"Args": []
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
-					"Notes": "",
-					"Args": [
-						"INSERT"
-					]
 				},
 				{
 					"Name": "",
@@ -3150,6 +3190,14 @@
 					"Notes": "",
 					"Args": [
 						"PAGE_UP"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"END"
 					]
 				},
 				{
@@ -3206,83 +3254,83 @@
 				},
 				{
 					"Name": "",
-					"Behavior": "&none",
-					"Notes": "",
-					"Args": []
-				},
-				{
-					"Name": "",
-					"Behavior": "&none",
-					"Notes": "",
-					"Args": []
-				},
-				{
-					"Name": "",
-					"Behavior": "&none",
-					"Notes": "",
-					"Args": []
-				},
-				{
-					"Name": "",
-					"Behavior": "&none",
-					"Notes": "",
-					"Args": []
-				},
-				{
-					"Name": "",
-					"Behavior": "&none",
-					"Notes": "",
-					"Args": []
-				},
-				{
-					"Name": "",
-					"Behavior": "&none",
-					"Notes": "",
-					"Args": []
-				},
-				{
-					"Name": "",
-					"Behavior": "&none",
-					"Notes": "",
-					"Args": []
-				},
-				{
-					"Name": "",
-					"Behavior": "&none",
-					"Notes": "",
-					"Args": []
-				},
-				{
-					"Name": "",
-					"Behavior": "&none",
-					"Notes": "",
-					"Args": []
-				},
-				{
-					"Name": "",
-					"Behavior": "&none",
-					"Notes": "",
-					"Args": []
-				},
-				{
-					"Name": "",
-					"Behavior": "&none",
-					"Notes": "",
-					"Args": []
-				},
-				{
-					"Name": "",
-					"Behavior": "&none",
-					"Notes": "",
-					"Args": []
-				},
-				{
-					"Name": "",
-					"Behavior": "&kp",
+					"Behavior": "&msc",
 					"Notes": "",
 					"Args": [
-						"RETURN"
+						"SCRL_LEFT"
 					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&msc",
+					"Notes": "",
+					"Args": [
+						"SCRL_DOWN"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&msc",
+					"Notes": "",
+					"Args": [
+						"SCRL_UP"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&msc",
+					"Notes": "",
+					"Args": [
+						"SCRL_RIGHT"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&none",
+					"Notes": "",
+					"Args": []
+				},
+				{
+					"Name": "",
+					"Behavior": "&none",
+					"Notes": "",
+					"Args": []
+				},
+				{
+					"Name": "",
+					"Behavior": "&none",
+					"Notes": "",
+					"Args": []
+				},
+				{
+					"Name": "",
+					"Behavior": "&none",
+					"Notes": "",
+					"Args": []
+				},
+				{
+					"Name": "",
+					"Behavior": "&none",
+					"Notes": "",
+					"Args": []
+				},
+				{
+					"Name": "",
+					"Behavior": "&none",
+					"Notes": "",
+					"Args": []
+				},
+				{
+					"Name": "",
+					"Behavior": "&none",
+					"Notes": "",
+					"Args": []
+				},
+				{
+					"Name": "",
+					"Behavior": "&none",
+					"Notes": "",
+					"Args": []
 				},
 				{
 					"Name": "",
@@ -3290,6 +3338,14 @@
 					"Notes": "",
 					"Args": [
 						"BACKSPACE"
+					]
+				},
+				{
+					"Name": "",
+					"Behavior": "&kp",
+					"Notes": "",
+					"Args": [
+						"RETURN"
 					]
 				},
 				{
@@ -3307,8 +3363,5 @@
 			]
 		}
 	],
-	"Custom": "/ {\n  behaviors {\n    hm: home_row_mod {\n      compatible = \"zmk,behavior-hold-tap\";\n      #binding-cells = <2>;\n      flavor = \"balanced\";\n      tapping-term-ms = <200>;\n      quick-tap-ms = <175>;\n      require-prior-idle-ms = <150>;\n      bindings = <&kp>, <&kp>;\n      hold-trigger-on-release;\n    };\n  };\n};\n",
-	"Advanced": {
-		"Logging": ""
-	}
+	"Custom": "/ {\n  behaviors {\n    hm: home_row_mod {\n      compatible = \"zmk,behavior-hold-tap\";\n      #binding-cells = <2>;\n      flavor = \"balanced\";\n      tapping-term-ms = <200>;\n      quick-tap-ms = <175>;\n      require-prior-idle-ms = <150>;\n      bindings = <&kp>, <&kp>;\n      hold-trigger-on-release;\n    };\n  };\n};\n"
 }
