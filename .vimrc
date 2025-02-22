@@ -108,7 +108,7 @@ end
 nvim_lsp.clangd.setup{ on_attach = on_attach }  -- apt install clangd
 nvim_lsp.gopls.setup{ on_attach = on_attach } -- go install golang.org/x/tools/gopls@latest
 nvim_lsp.zls.setup{ on_attach = on_attach } -- https://github.com/zigtools/zls
-nvim_lsp.tsserver.setup{ on_attach = on_attach }  -- npm install -g typescript typescript-language-server
+nvim_lsp.ts_ls.setup{ on_attach = on_attach }  -- npm install -g typescript typescript-language-server
 nvim_lsp.vimls.setup{ on_attach = on_attach }  -- npm install -g vim-language-server
 nvim_lsp.pyright.setup{ on_attach = on_attach } -- npm install -g pyright
 nvim_lsp.rls.setup {

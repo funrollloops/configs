@@ -7,7 +7,7 @@ files=$(find . -maxdepth 1 -name '.*' -type f -not -name '*.swp' \
 
 SCRIPT_DIR=$(dirname "${BASH_SOURCE[0]}")
 GH_CLI_VERSION=2.27.0
-NVIM_VERSION=0.10.1
+NVIM_VERSION=0.10.4
 
 declare -a DEFAULT_COMMANDS
 DEFAULT_COMMANDS=(
@@ -178,8 +178,9 @@ function install_nvim {
   else
     echo "installing nvim ${NVIM_VERSION}..."
   fi
+  sudo apt install libfuse-dev
   _run curl -fL \
-    "https://github.com/neovim/neovim/releases/download/v${NVIM_VERSION}/nvim.appimage" \
+    "https://github.com/neovim/neovim/releases/download/v${NVIM_VERSION}/nvim-linux-x86_64.appimage" \
     -o "${DEST}"
   chmod u+x "${DEST}"
   ln -sf "$(realpath "$DEST")" "${SCRIPT_DIR}/bin/nvim"
