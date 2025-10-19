@@ -63,6 +63,8 @@ function link_files {
   _link "$(readlink -f nvim-init.lua)" ~/.config/nvim/init.lua
   _link "$(readlink -f ./python.vim)" ~/.config/nvim/after/ftplugin/python/python.vim
   _link "$(readlink -f bin)" ~/.bin
+  mkdir -p ~/.config/alacritty
+  _link "$(readlink -f alacritty.toml)" ~/.config/alacritty/alacritty.toml
   echo 'done installing symlinks'
 }
 
@@ -109,7 +111,7 @@ function install_packages {
   }
 
   for bin in npm ccache clang clangd clang-format lld tmux git tree xclip \
-    ipython3 shellcheck direnv curl podman gnome-session diffstat keychain; do
+    ipython3 shellcheck direnv curl podman gnome-session diffstat keychain alacritty; do
     command_package "${bin}"
   done
   command_package rg ripgrep
