@@ -7,7 +7,7 @@ files=$(find . -maxdepth 1 -name '.*' -type f -not -name '*.swp' \
 
 SCRIPT_DIR=$(dirname "${BASH_SOURCE[0]}")
 GH_CLI_VERSION=2.27.0
-NVIM_VERSION=0.10.4
+NVIM_VERSION=0.11.4
 
 declare -a DEFAULT_COMMANDS
 DEFAULT_COMMANDS=(
@@ -16,10 +16,8 @@ DEFAULT_COMMANDS=(
   install_packages
   install_ghcli
   generate_ssh_key # requires ghcli
-  install_vim_plug # requires nvim
   install_setcpu   # requires packages
   install_hibernate   # requires packages
-  update_tmux_plugins # requires packages
   configure_mouse  # requires packages (particularly gnome-session)
 )
 
@@ -62,7 +60,7 @@ function link_files {
   _link ~/.vim/bundle ~/.config/nvim/bundle
   _link ~/.vim/after ~/.config/nvim/after
   _link "$(readlink -f ./yapf)" ~/.config/yapf/style
-  _link "$(readlink -f ./.vimrc)" ~/.config/nvim/init.vim
+  _link "$(readlink -f nvim-init.lua)" ~/.config/nvim/init.lua
   _link "$(readlink -f ./python.vim)" ~/.config/nvim/after/ftplugin/python/python.vim
   _link "$(readlink -f bin)" ~/.bin
   echo 'done installing symlinks'
@@ -187,20 +185,6 @@ function install_nvim {
   echo "OK"
 }
 
-function install_vim_plug {
-  if [ -e ~/.vim/autoload/plug.vim ]; then
-    echo 'vim-plug already installed, updating'
-  else
-    echo 'installing vim-plug'
-    (
-      mkdir -p ~/.vim/autoload
-      cd ~/.vim/autoload
-      wget https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    )
-  fi
-  _run $(which nvim) +PlugInstall +TSUpdate +qa
-}
-
 function install_setcpu {
   make -C src set-cpu
   if ! diff -q src/set-cpu bin/set-cpu; then
@@ -217,11 +201,6 @@ function install_hibernate {
     _run sudo chown root bin/hibernate
     _run sudo chmod +s bin/hibernate
   fi
-}
-
-function update_tmux_plugins {
-  ~/.tmux/plugins/tpm/bin/install_plugins all
-  ~/.tmux/plugins/tpm/bin/update_plugins all
 }
 
 function configure_mouse {
@@ -241,7 +220,6 @@ function main {
       packages) _run install_packages ;;
       ghcli) _run install_ghcli ;;
       nvim) _run install_nvim ;;
-      vim-plug) _run install_vim_plug ;;
       setcpu) _run install_setcpu ;;
       hibernate) _run install_hibernate;;
       mouse) _run configure_mouse ;;

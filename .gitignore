@@ -10,3 +10,12 @@ bazel-bin
 bazel-native
 bazel-out
 bazel-test-logs
+bin/hibernate
+bin/nvim*
+bin/set-cpu
+bin/uv
+bin/uvx
+bin/cursor
+download/*
+src/hibernate
+src/set-cpu
