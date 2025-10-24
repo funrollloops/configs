@@ -12,6 +12,7 @@ NVIM_VERSION=0.11.4
 declare -a DEFAULT_COMMANDS
 DEFAULT_COMMANDS=(
   link_files
+  install_fonts
   install_nvim
   install_packages
   install_ghcli
@@ -145,6 +146,11 @@ function install_packages {
   else
     echo 'npm packages already installed'
   fi
+}
+
+function install_fonts {
+  mkdir -p ~/.local/share/fonts
+  find fonts -name '*.ttf' -print0 | xargs '-I{}' -n1 cp '{}' ~/.local/share/fonts
 }
 
 function reinstall_ghcli {
