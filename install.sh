@@ -216,6 +216,10 @@ function configure_mouse {
   fi
 }
 
+function focus-mode-click {
+  gsettings set org.gnome.desktop.wm.preferences focus-mode click
+}
+
 function main {
   for cmd in "$@"; do
     case "${cmd}" in
