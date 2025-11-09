@@ -147,7 +147,7 @@ function venv_ps1 {
   if [ -z "${VIRTUAL_ENV}" ]; then
     return
   fi
-  echo " ε:$(realpath --relative-to=. "${VIRTUAL_ENV}")"
+  echo " $(realpath --relative-to=. "${VIRTUAL_ENV}")"
 }
 
 function to_gist {

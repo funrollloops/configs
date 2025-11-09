@@ -1,9 +1,9 @@
 [terminal]
 shell = { program = "/usr/bin/tmux", args = ["new", "-Asmain"] }
 
-[window.dimensions]
-columns = 165
-lines = 50
+[window]
+decorations = 'full'
+dimensions = { columns = 165, lines = 50 }
 
 [scrolling]
 history=0
