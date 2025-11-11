@@ -94,6 +94,9 @@ require("lazy").setup({
       vim.keymap.set('n', '<leader>gp', ':Gitsigns preview_hunk<CR>', { desc = "Preview git hunk" })
       vim.keymap.set('n', '<leader>gs', ':Gitsigns stage_hunk<CR>', { desc = "Stage git hunk" })
       vim.keymap.set('n', '<leader>gu', ':Gitsigns undo_stage_hunk<CR>', { desc = "Undo stage hunk" })
+      vim.keymap.set('v', '<leader>gs', ':Gitsigns stage_hunk<CR>', { desc = "Stage git hunk (visual)" })
+      vim.keymap.set('n', ']c', ':Gitsigns next_hunk<CR>', { desc = "Next git hunk" })
+      vim.keymap.set('n', '[c', ':Gitsigns prev_hunk<CR>', { desc = "Previous git hunk" })
     end,
   },
   { -- Autoformatter
@@ -113,12 +116,12 @@ require("lazy").setup({
           typescript = { 'prettier' },
           yaml = { 'prettier' },
         },
-        format_on_save = {
-          timeout_ms = 500,
-          lsp_fallback = true,
-        },
+      --format_on_save = {
+      --  timeout_ms = 500,
+      --  lsp_fallback = true,
+      --},
       })
-      vim.keymap.set({'n', 'v'}, '<leader>f', function() require('conform').format() end, { desc = "Format code" })
+      vim.keymap.set({'n', 'v'}, '<leader>f', function() require('conform').format({lsp_fallback=true}) end, { desc = "Format code" })
     end,
   },
 
@@ -138,8 +141,11 @@ require("lazy").setup({
       local on_attach = function(client, bufnr)
         vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
       end
+      vim.lsp.config('pyright', {
+	cmd = {"uv", "run", "--with=pyright", "--", "pyright-langserver", "--stdio"},
+      })
       vim.lsp.config('bashls', {
-        cmd = {"/snap/bin/bash-language-server", "start" },
+        cmd = {"/usr/bin/env", "bash-language-server", "start" },
       })
       for _, lang in ipairs({'clangd', 'gopls', 'zls', 'ts_ls', 'vimls', 'pyright',
                              'rust_analyzer', 'bashls'}) do

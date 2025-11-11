@@ -16,6 +16,7 @@ set mouse=""
 set background=light
 set inccommand=nosplit
 set completeopt=menuone,longest,noselect
+set autoread
 syntax sync minlines=1000
 syntax on
 
@@ -40,11 +41,14 @@ inoremap <C-K> <++><ESC>
 inoremap D<< std::cerr << __FILE__ ":" << __LINE__ <<
 nnoremap <C-U> :e %:p:s,.h$,.X123X,:s,.cc$,.h,:s,.X123X$,.cc,<CR>
 nnoremap <leader>gd :term git diff %<CR>
-nnoremap <leader>ga :term git add -p %<CR>
-nnoremap <leader>gc :term git commit<CR>
-nnoremap <leader>gaa :term git add -p<CR>
+nnoremap <leader>ga :term git add -p %<CR>i
+nnoremap <leader>gc :term git commit<CR>i
+nnoremap <leader>gca :term git commit --amend<CR>i
+nnoremap <leader>gaa :term git add -p<CR>i
 
-" The default diff colorscheme has foreground=background in some cases.
-if &diff
-  colorscheme evening
-endif
+" Automatically reload the file if it was changed outside of Vim.
+augroup auto_reload
+  autocmd!
+  autocmd FocusGained,BufEnter,CursorHold * if mode() != 'c' | checktime | endif
+  autocmd FileChangedShellPost * echohl WarningMsg | echom "File changed on disk. Reloading..." | echohl None
+augroup END

@@ -124,7 +124,7 @@ function install_packages {
   command_package ninja ninja-build
   command_package go golang-go
   command_package ctags universal-ctags
-  if ! git gui version > /dev/null; then
+  if ! git gui version > /dev/null 2>&1; then
     to_install+=(git-gui)
   fi
   if ! _have_command yapf yapf3; then
