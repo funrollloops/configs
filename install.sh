@@ -150,7 +150,7 @@ function install_packages {
 
 function install_fonts {
   mkdir -p ~/.local/share/fonts
-  find fonts -name '*.ttf' -print0 | xargs '-I{}' -n1 cp '{}' ~/.local/share/fonts
+  find fonts -name '*.ttf' -print0 | xargs  -0 '-I{}' -n1 cp '{}' ~/.local/share/fonts
 }
 
 function reinstall_ghcli {
