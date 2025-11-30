@@ -20,6 +20,8 @@ DEFAULT_COMMANDS=(
   install_setcpu   # requires packages
   install_hibernate   # requires packages
   configure_mouse  # requires packages (particularly gnome-session)
+  install_rust     # requires packages
+  update_rust
 )
 
 function _run {
@@ -111,7 +113,7 @@ function install_packages {
     fi
   }
 
-  for bin in npm ccache clang clangd clang-format lld tmux git tree xclip \
+  for bin in rustup npm ccache clang clangd clang-format lld tmux git tree xclip \
     ipython3 shellcheck direnv curl podman gnome-session diffstat keychain alacritty; do
     command_package "${bin}"
   done
@@ -211,6 +213,22 @@ function install_hibernate {
   fi
 }
 
+function install_rust {
+  if ! _have_command rustup; then
+    print "rustup not found, installing"
+    return 1
+  fi
+  rustup default stable
+  rustup component add rust-analyzer clippy rustfmt
+  cargo install --locked uv mise cargo-update
+}
+
+function update_rust {
+  rustup self update
+  rustup update
+  cargo update
+}
+
 function configure_mouse {
   if _have_command gsettings 2> /dev/null; then
     echo "configuring focus-follows-mouse"
@@ -237,6 +255,7 @@ function main {
       mouse) _run configure_mouse ;;
       tmux) _run update_tmux_plugins ;;
       ssh-key) _run generate_ssh_key ;;
+      rust) _run install_rust ;;
       *) _run "$cmd" ;;
     esac
   done

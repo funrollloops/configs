@@ -176,8 +176,6 @@ if command -v direnv > /dev/null 2> /dev/null; then
   eval "$(direnv hook bash)"
 fi
 
-if command -v rg > /dev/null 2> /dev/null; then
-  export FZF_DEFAULT_COMMAND='rg --files --hidden'
+if command -v mise > /dev/null 2> /dev/null; then
+  eval "$(mise activate bash)" # added by https://mise.run/bash
 fi
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
