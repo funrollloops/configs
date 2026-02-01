@@ -224,9 +224,9 @@ function install_rust {
 }
 
 function update_rust {
-  rustup self update
+  rustup self update || true
   rustup update
-  cargo update
+  cargo install-update --all
 }
 
 function configure_mouse {
