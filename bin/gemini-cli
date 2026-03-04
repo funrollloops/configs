@@ -1,0 +1,2 @@
+#/bin/sh
+mise x bun -- bunx @google/gemini-cli
