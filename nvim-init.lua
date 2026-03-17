@@ -61,11 +61,17 @@ require("lazy").setup({
     branch = '0.1.x',
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
+      require('telescope').setup({
+        defaults = {
+          wrap_results = true,
+          layout_strategy = 'vertical',
+        }
+      })
       local telescope = require('telescope.builtin')
-      vim.keymap.set('n', '<leader>t', telescope.find_files, { desc = "Find Files" })
-      vim.keymap.set('n', '<leader>fg', telescope.live_grep, { desc = "Live Grep" })
-      vim.keymap.set('n', '<leader>fb', telescope.buffers, { desc = "Find Buffers" })
-      vim.keymap.set('n', '<leader>fh', telescope.help_tags, { desc = "Find Help Tags" })
+      vim.keymap.set('n', '<leader>tt', telescope.find_files, { desc = "Find Files" })
+      vim.keymap.set('n', '<leader>tg', telescope.live_grep, { desc = "Live Grep" })
+      vim.keymap.set('n', '<leader>tb', telescope.buffers, { desc = "Find Buffers" })
+      vim.keymap.set('n', '<leader>th', telescope.help_tags, { desc = "Find Help Tags" })
     end,
   },
   { -- File Explorer
@@ -94,6 +100,7 @@ require("lazy").setup({
       vim.keymap.set('n', '<leader>gp', ':Gitsigns preview_hunk<CR>', { desc = "Preview git hunk" })
       vim.keymap.set('n', '<leader>gs', ':Gitsigns stage_hunk<CR>', { desc = "Stage git hunk" })
       vim.keymap.set('n', '<leader>gu', ':Gitsigns undo_stage_hunk<CR>', { desc = "Undo stage hunk" })
+      vim.keymap.set('n', '<leader>gr', ':Gitsigns reset_hunk<CR>', { desc = "Reset git hunk" })
       vim.keymap.set('v', '<leader>gs', ':Gitsigns stage_hunk<CR>', { desc = "Stage git hunk (visual)" })
       vim.keymap.set('n', ']c', ':Gitsigns next_hunk<CR>', { desc = "Next git hunk" })
       vim.keymap.set('n', '[c', ':Gitsigns prev_hunk<CR>', { desc = "Previous git hunk" })

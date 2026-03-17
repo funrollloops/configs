@@ -25,6 +25,8 @@ augroup golang
   autocmd FileType go set noexpandtab
 augroup END
 
+autocmd! FileType TelescopeResults setlocal nofoldenable
+
 nnoremap <leader>m :make<CR>
 nnoremap <leader>r :e %<CR>
 nnoremap <leader>rr :e! %<CR>
@@ -34,7 +36,6 @@ vnoremap <leader>f :FormatLines<CR>
 nnoremap <leader>f :FormatCode<CR>
 nnoremap <C-D> :e `dirname %`<CR>
 nnoremap <leader>ga :!git add %<CR>
-nnoremap <leader>t :FZF<CR>
 imap <C-J> <ESC><C-J>
 nnoremap <C-J> /<+[^+]*+><CR>cf>
 inoremap <C-K> <++><ESC>
@@ -52,3 +53,5 @@ augroup auto_reload
   autocmd FocusGained,BufEnter,CursorHold * if mode() != 'c' | checktime | endif
   autocmd FileChangedShellPost * echohl WarningMsg | echom "File changed on disk. Reloading..." | echohl None
 augroup END
+
+set background=light
