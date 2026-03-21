@@ -223,6 +223,14 @@ function install_rust {
   cargo install --locked uv mise cargo-update
 }
 
+function install_bun {
+  mise use bun stable
+}
+
+function install_bazelisk {
+  mise use bazelisk stable
+}
+
 function update_rust {
   rustup self update || true
   rustup update

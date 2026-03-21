@@ -32,8 +32,8 @@ nnoremap <leader>r :e %<CR>
 nnoremap <leader>rr :e! %<CR>
 vnoremap <leader>s :sort<CR>
 nnoremap <leader>ss :syntax sync fromStart<CR>
-vnoremap <leader>f :FormatLines<CR>
-nnoremap <leader>f :FormatCode<CR>
+"vnoremap <leader>f :FormatLines<CR>
+"nnoremap <leader>f :FormatCode<CR>
 nnoremap <C-D> :e `dirname %`<CR>
 nnoremap <leader>ga :!git add %<CR>
 imap <C-J> <ESC><C-J>
