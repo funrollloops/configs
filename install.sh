@@ -22,6 +22,8 @@ DEFAULT_COMMANDS=(
   configure_mouse  # requires packages (particularly gnome-session)
   install_rust     # requires packages
   update_rust
+  install_bun
+  install_bazelisk
 )
 
 function _run {
@@ -91,11 +93,12 @@ function sys_pkg_install {
         clangd) PKGS+=(clang-tools-extra) ;;
         clang-format) PKGS+=(clang-tools-extra) ;;
         shellcheck) PKGS+=(ShellCheck) ;;
+        libssl-dev) PKGS+=(openssl-devel) ;;
         yapf3) PKGS+=(python3-yapf) ;;
         *) PKGS+=("${pkg}") ;;
       esac
     done
-    _run sudo dnf install -y "${PKGS[@]}"
+    _run sudo dnf install --skip-unavailable -y "${PKGS[@]}"
   fi
 }
 
@@ -113,20 +116,18 @@ function install_packages {
     fi
   }
 
-  for bin in rustup npm ccache clang clangd clang-format lld tmux git tree xclip \
+  for bin in npm ccache clang clangd clang-format lld tmux git tree xclip \
     ipython3 shellcheck direnv curl podman gnome-session diffstat keychain alacritty; do
     command_package "${bin}"
   done
   command_package rg ripgrep
   command_package python3 python3
-  if ! python3 -m venv --help > /dev/null 2> /dev/null; then
-    to_install+=("python3-venv")
-  fi
   command_package python python-is-python3
   command_package pip3 python3-pip
   command_package ninja ninja-build
   command_package go golang-go
   command_package ctags universal-ctags
+  command_package hostname
   if ! git gui version > /dev/null 2>&1; then
     to_install+=(git-gui)
   fi
@@ -165,8 +166,10 @@ function reinstall_ghcli {
     elif _have_command dnf; then
       ext=rpm
     fi
-    curl -fLO https://github.com/cli/cli/releases/download/v${GH_CLI_VERSION}/gh_${GH_CLI_VERSION}_linux_amd64.${ext}
-    sys_pkg_install ./gh_${GH_CLI_VERSION}_linux_amd64.${ext}
+    (cd /tmp;
+      curl -fLO https://github.com/cli/cli/releases/download/v${GH_CLI_VERSION}/gh_${GH_CLI_VERSION}_linux_amd64.${ext}
+      sys_pkg_install ./gh_${GH_CLI_VERSION}_linux_amd64.${ext}
+    )
   )
 }
 
@@ -215,20 +218,26 @@ function install_hibernate {
 
 function install_rust {
   if ! _have_command rustup; then
-    print "rustup not found, installing"
-    return 1
+    echo "rustup not found, installing"
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    if (! command -v rustup) && [ -e "$HOME/.cargo/bin/rustup" ]; then
+      PATH="${PATH}:$HOME/.cargo/bin/rustup"
+    fi
+    sys_pkg_install libssl-dev
+    rustup default stable
+    rustup component add rust-analyzer clippy rustfmt
+    cargo install --locked uv mise cargo-update
+  else
+    update_rust
   fi
-  rustup default stable
-  rustup component add rust-analyzer clippy rustfmt
-  cargo install --locked uv mise cargo-update
 }
 
 function install_bun {
-  mise use bun stable
+  mise use -g bun@latest
 }
 
 function install_bazelisk {
-  mise use bazelisk stable
+  mise use -g bazelisk@latest
 }
 
 function update_rust {
