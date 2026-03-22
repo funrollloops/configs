@@ -41,7 +41,7 @@ function _link {
     mkdir -p "$(dirname "${dest}")"
     ln -s "$src" "$dest"
     echo ok
-  elif [ "$(readlink -f "$dest")" != "$(readlink -f $src)" ]; then
+  elif [ "$(readlink -f "$dest")" != "$(readlink -f "$src")" ]; then
     echo -e "\033[0;31mfile in the way, remove\033[0m"
     ls -l "$dest"
     return 1
@@ -107,6 +107,7 @@ function sys_pkg_install {
 function install_packages {
   local -a to_install
 
+  # shellcheck disable=SC1090
   source ~/.bashrc
 
   function command_package {
@@ -222,6 +223,7 @@ function install_rust {
   if ! _have_command rustup; then
     echo "rustup not found, installing"
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh 
+    # shellcheck disable=SC1090
     source ~/.cargo/env
     sys_pkg_install libssl-dev
     rustup default stable
