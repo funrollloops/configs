@@ -22,8 +22,10 @@ DEFAULT_COMMANDS=(
   configure_mouse  # requires packages (particularly gnome-session)
   install_rust     # requires packages
   update_rust
+  install_uv
   install_bun
   install_bazelisk
+  mise_up
 )
 
 function _run {
@@ -219,15 +221,19 @@ function install_hibernate {
 function install_rust {
   if ! _have_command rustup; then
     echo "rustup not found, installing"
-    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh 
     source ~/.cargo/env
     sys_pkg_install libssl-dev
     rustup default stable
     rustup component add rust-analyzer clippy rustfmt
-    cargo install --locked uv mise cargo-update
+    cargo install --locked mise cargo-update samply
   else
     update_rust
   fi
+}
+
+function install_uv {
+  mise use -g uv@latest
 }
 
 function install_bun {
@@ -236,6 +242,10 @@ function install_bun {
 
 function install_bazelisk {
   mise use -g bazelisk@latest
+}
+
+function mise_up {
+  mise up
 }
 
 function update_rust {
