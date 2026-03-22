@@ -2,12 +2,12 @@
 
 set -e
 
-files=$(find . -maxdepth 1 -name '.*' -type f -not -name '*.swp' \
-  -exec readlink -f {} \;)
-
 SCRIPT_DIR=$(dirname "${BASH_SOURCE[0]}")
 GH_CLI_VERSION=2.27.0
 NVIM_VERSION=0.11.4
+
+files=$(find "${SCRIPT_DIR}" -maxdepth 1 -name '.*' -type f -not -name '*.swp' \
+  -exec readlink -f {} \;)
 
 declare -a DEFAULT_COMMANDS
 DEFAULT_COMMANDS=(
@@ -34,12 +34,12 @@ function _run {
 function _link {
   local src=$1
   local dest=$2
-  echo -ne "installing $src..."
+  echo -ne "installing $src -> ${dest}..."
   if [ ! -e "$dest" ]; then
     mkdir -p "$(dirname "${dest}")"
     ln -s "$src" "$dest"
     echo ok
-  elif [ "$(readlink -f "$dest")" != "$src" ]; then
+  elif [ "$(readlink -f "$dest")" != "$(readlink -f $src)" ]; then
     echo -e "\033[0;31mfile in the way, remove\033[0m"
     ls -l "$dest"
     return 1
@@ -64,12 +64,12 @@ function link_files {
   _link ~/.vim/autoload ~/.config/nvim/autoload
   _link ~/.vim/bundle ~/.config/nvim/bundle
   _link ~/.vim/after ~/.config/nvim/after
-  _link "$(readlink -f ./yapf)" ~/.config/yapf/style
-  _link "$(readlink -f nvim-init.lua)" ~/.config/nvim/init.lua
-  _link "$(readlink -f ./python.vim)" ~/.config/nvim/after/ftplugin/python/python.vim
-  _link "$(readlink -f bin)" ~/.bin
+  _link "$(readlink -f "${SCRIPT_DIR}/yapf")" ~/.config/yapf/style
+  _link "$(readlink -f "${SCRIPT_DIR}/nvim-init.lua")" ~/.config/nvim/init.lua
+  _link "$(readlink -f "${SCRIPT_DIR}/python.vim")" ~/.config/nvim/after/ftplugin/python/python.vim
+  _link "$(readlink -f "${SCRIPT_DIR}/bin")" ~/.bin
   mkdir -p ~/.config/alacritty
-  _link "$(readlink -f alacritty.toml)" ~/.config/alacritty/alacritty.toml
+  _link "$(readlink -f "${SCRIPT_DIR}/alacritty.toml")" ~/.config/alacritty/alacritty.toml
   echo 'done installing symlinks'
 }
 
@@ -220,9 +220,7 @@ function install_rust {
   if ! _have_command rustup; then
     echo "rustup not found, installing"
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-    if (! command -v rustup) && [ -e "$HOME/.cargo/bin/rustup" ]; then
-      PATH="${PATH}:$HOME/.cargo/bin/rustup"
-    fi
+    source ~/.cargo/env
     sys_pkg_install libssl-dev
     rustup default stable
     rustup component add rust-analyzer clippy rustfmt
@@ -243,7 +241,7 @@ function install_bazelisk {
 function update_rust {
   rustup self update || true
   rustup update
-  cargo install-update --all
+  cargo install-update --all --locked
 }
 
 function configure_mouse {
