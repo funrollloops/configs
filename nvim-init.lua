@@ -78,7 +78,13 @@ require("lazy").setup({
     "nvim-tree/nvim-tree.lua",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
-      require("nvim-tree").setup({})
+      require("nvim-tree").setup({
+        actions = {
+          change_dir = {
+            enable = false,
+          },
+        },
+      })
       vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', { desc = "Toggle File Explorer" })
     end,
   },
@@ -119,6 +125,7 @@ require("lazy").setup({
           cpp = { 'clang-format' },
           c = { 'clang-format' },
           bash = { 'shfmt' },
+          rust = { 'rustfmt' },
           javascript = { 'prettier' },
           typescript = { 'prettier' },
           yaml = { 'prettier' },
