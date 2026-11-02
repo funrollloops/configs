@@ -4,7 +4,7 @@ set -e
 
 SCRIPT_DIR=$(dirname "${BASH_SOURCE[0]}")
 GH_CLI_VERSION=2.27.0
-NVIM_VERSION=0.11.4
+NVIM_VERSION=0.12.6
 
 files=$(find "${SCRIPT_DIR}" -maxdepth 1 -name '.*' -type f -not -name '*.swp' \
   -exec readlink -f {} \;)
@@ -94,8 +94,15 @@ function sys_pkg_install {
       case "${pkg}" in
         clangd) PKGS+=(clang-tools-extra) ;;
         clang-format) PKGS+=(clang-tools-extra) ;;
-        shellcheck) PKGS+=(ShellCheck) ;;
+        g++) PKGS+=(gcc-c++) ;;
+        golang-go) PKGS+=(golang) ;;
+        ipython3) PKGS+=(python3-ipython) ;;
+        libfuse-dev) PKGS+=(fuse-devel) ;;
         libssl-dev) PKGS+=(openssl-devel) ;;
+        npm) PKGS+=(nodejs-npm) ;;
+        python-is-python3) PKGS+=(python-unversioned-command) ;;
+        shellcheck) PKGS+=(ShellCheck) ;;
+        universal-ctags) PKGS+=(ctags) ;;
         yapf3) PKGS+=(python3-yapf) ;;
         *) PKGS+=("${pkg}") ;;
       esac
@@ -120,7 +127,8 @@ function install_packages {
   }
 
   for bin in npm ccache clang clangd clang-format lld tmux git tree xclip \
-    ipython3 shellcheck direnv curl podman gnome-session diffstat keychain alacritty; do
+    ipython3 shellcheck direnv curl podman gnome-session diffstat keychain alacritty \
+    make gcc g++; do
     command_package "${bin}"
   done
   command_package rg ripgrep
@@ -192,7 +200,7 @@ function install_nvim {
   else
     echo "installing nvim ${NVIM_VERSION}..."
   fi
-  sudo apt install libfuse-dev
+  sys_pkg_install libfuse-dev
   _run curl -fL \
     "https://github.com/neovim/neovim/releases/download/v${NVIM_VERSION}/nvim-linux-x86_64.appimage" \
     -o "${DEST}"

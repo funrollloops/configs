@@ -1,19 +1,5 @@
 vim.cmd('source ~/.vimrc')
 
--- lazy.nvim Bootstrap
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
-end
-vim.opt.rtp:prepend(lazypath)
-
 vim.g['deoplete#enable_at_startup'] = 1
 vim.g['airline#extensions#tabline#enabled'] = 1
 
@@ -55,150 +41,132 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
-require("lazy").setup({
-  { -- Fuzzy Search
-    'nvim-telescope/telescope.nvim',
-    branch = '0.1.x',
-    dependencies = { 'nvim-lua/plenary.nvim' },
-    config = function()
-      require('telescope').setup({
-        defaults = {
-          wrap_results = true,
-          layout_strategy = 'vertical',
-        }
-      })
-      local telescope = require('telescope.builtin')
-      vim.keymap.set('n', '<leader>tt', telescope.find_files, { desc = "Find Files" })
-      vim.keymap.set('n', '<leader>tg', telescope.live_grep, { desc = "Live Grep" })
-      vim.keymap.set('n', '<leader>tb', telescope.buffers, { desc = "Find Buffers" })
-      vim.keymap.set('n', '<leader>th', telescope.help_tags, { desc = "Find Help Tags" })
-    end,
-  },
-  { -- File Explorer
-    "nvim-tree/nvim-tree.lua",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      require("nvim-tree").setup({
-        actions = {
-          change_dir = {
-            enable = false,
-          },
-        },
-      })
-      vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', { desc = "Toggle File Explorer" })
-    end,
-  },
-  { -- Statusline
-    'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-    config = function()
-      require('lualine').setup({
-        options = {
-          theme = 'auto'
-        }
-      })
-    end,
-  },
-  { -- Git Integration
-    'lewis6991/gitsigns.nvim',
-    config = function()
-      require('gitsigns').setup()
-      vim.keymap.set('n', '<leader>gp', ':Gitsigns preview_hunk<CR>', { desc = "Preview git hunk" })
-      vim.keymap.set('n', '<leader>gs', ':Gitsigns stage_hunk<CR>', { desc = "Stage git hunk" })
-      vim.keymap.set('n', '<leader>gu', ':Gitsigns undo_stage_hunk<CR>', { desc = "Undo stage hunk" })
-      vim.keymap.set('n', '<leader>gr', ':Gitsigns reset_hunk<CR>', { desc = "Reset git hunk" })
-      vim.keymap.set('v', '<leader>gs', ':Gitsigns stage_hunk<CR>', { desc = "Stage git hunk (visual)" })
-      vim.keymap.set('n', ']c', ':Gitsigns next_hunk<CR>', { desc = "Next git hunk" })
-      vim.keymap.set('n', '[c', ':Gitsigns prev_hunk<CR>', { desc = "Previous git hunk" })
-    end,
-  },
-  { -- Autoformatter
-    'stevearc/conform.nvim',
-    event = { 'BufWritePre' },
-    cmd = { 'ConformInfo' },
-    config = function()
-      require('conform').setup({
-        formatters_by_ft = {
-          lua = { 'stylua' },
-          go = { 'gofmt' },
-          python = { 'yapf' },
-          cpp = { 'clang-format' },
-          c = { 'clang-format' },
-          bash = { 'shfmt' },
-          rust = { 'rustfmt' },
-          javascript = { 'prettier' },
-          typescript = { 'prettier' },
-          yaml = { 'prettier' },
-        },
-      --format_on_save = {
-      --  timeout_ms = 500,
-      --  lsp_fallback = true,
-      --},
-      })
-      vim.keymap.set({'n', 'v'}, '<leader>f', function() require('conform').format({lsp_fallback=true}) end, { desc = "Format code" })
-    end,
-  },
-
-  { -- Session Manager
-    'rmagatti/auto-session',
-    config = function()
-      require('auto-session').setup({
-        log_level = 'error',
-      })
-    end,
-  },
-  { 'github/copilot.vim' }, -- AI / Copilot
-  { -- LSP Configuration
-    'neovim/nvim-lspconfig',
-    config = function()
-      local nvim_lsp = require('lspconfig')
-      local on_attach = function(client, bufnr)
-        vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+vim.api.nvim_create_autocmd('PackChanged', {
+  callback = function(ev)
+    local name, kind = ev.data.spec.name, ev.data.kind
+    if name == 'nvim-treesitter' and (kind == 'install' or kind == 'update') then
+      if not ev.data.active then
+        vim.cmd.packadd('nvim-treesitter')
       end
-      vim.lsp.config('pyright', {
-	cmd = {"uv", "run", "--with=pyright", "--", "pyright-langserver", "--stdio"},
-      })
-      vim.lsp.config('bashls', {
-        cmd = {"/usr/bin/env", "bash-language-server", "start" },
-      })
-      for _, lang in ipairs({'clangd', 'gopls', 'zls', 'ts_ls', 'vimls', 'pyright',
-                             'rust_analyzer', 'bashls'}) do
-        vim.lsp.enable(lang)
-      end
-    end,
-  },
-  { -- Treesitter for Syntax Highlighting
-    'nvim-treesitter/nvim-treesitter',
-    build = ':TSUpdate',
-    config = function()
-      require('nvim-treesitter.configs').setup {
-        ensure_installed = {"c", "lua", "cpp", "bash", "go", "javascript", "typescript", "vim", "yaml"},
-        sync_install = false,
-        highlight = {
-          enable = true,
-          additional_vim_regex_highlighting = false,
-        },
-        indent = {
-          enable = true
-        },
-        incremental_selection = {
-          enable = true,
-          keymaps = {
-            init_selection = "gnn",
-            node_incremental = "grn",
-            scope_incremental = "grc",
-            node_decremental = "grm",
-          },
-        },
-      }
-    end,
-  },
-  { -- Solarized colorscheme
-    'Tsuzat/NeoSolarized.nvim',
-    lazy = false, -- make sure we load this during startup if it is your main colorscheme
-    priority = 1000, -- make sure to load this before all the other start plugins
-    config = function()
-      vim.cmd [[ colorscheme NeoSolarized ]]
+      vim.cmd('TSUpdate')
     end
+  end,
+})
+
+vim.pack.add({
+  'https://github.com/nvim-lua/plenary.nvim',
+  'https://github.com/nvim-tree/nvim-web-devicons',
+  'https://github.com/Tsuzat/NeoSolarized.nvim',
+  { src = 'https://github.com/nvim-telescope/telescope.nvim', version = '0.1.x' },
+  'https://github.com/nvim-tree/nvim-tree.lua',
+  'https://github.com/nvim-lualine/lualine.nvim',
+  'https://github.com/lewis6991/gitsigns.nvim',
+  'https://github.com/stevearc/conform.nvim',
+  'https://github.com/rmagatti/auto-session',
+  'https://github.com/github/copilot.vim',
+  'https://github.com/neovim/nvim-lspconfig',
+  { src = 'https://github.com/nvim-treesitter/nvim-treesitter', version = 'master' },
+}, { confirm = false })
+
+-- Solarized colorscheme
+vim.cmd [[ colorscheme NeoSolarized ]]
+
+-- Fuzzy Search
+require('telescope').setup({
+  defaults = {
+    wrap_results = true,
+    layout_strategy = 'vertical',
   }
 })
+local telescope = require('telescope.builtin')
+vim.keymap.set('n', '<leader>tt', telescope.find_files, { desc = "Find Files" })
+vim.keymap.set('n', '<leader>tg', telescope.live_grep, { desc = "Live Grep" })
+vim.keymap.set('n', '<leader>tb', telescope.buffers, { desc = "Find Buffers" })
+vim.keymap.set('n', '<leader>th', telescope.help_tags, { desc = "Find Help Tags" })
+
+-- File Explorer
+require("nvim-tree").setup({
+  actions = {
+    change_dir = {
+      enable = false,
+    },
+  },
+})
+vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', { desc = "Toggle File Explorer" })
+
+-- Statusline
+require('lualine').setup({
+  options = {
+    theme = 'auto'
+  }
+})
+
+-- Git Integration
+require('gitsigns').setup()
+vim.keymap.set('n', '<leader>gp', ':Gitsigns preview_hunk<CR>', { desc = "Preview git hunk" })
+vim.keymap.set('n', '<leader>gs', ':Gitsigns stage_hunk<CR>', { desc = "Stage git hunk" })
+vim.keymap.set('n', '<leader>gu', ':Gitsigns undo_stage_hunk<CR>', { desc = "Undo stage hunk" })
+vim.keymap.set('n', '<leader>gr', ':Gitsigns reset_hunk<CR>', { desc = "Reset git hunk" })
+vim.keymap.set('v', '<leader>gs', ':Gitsigns stage_hunk<CR>', { desc = "Stage git hunk (visual)" })
+vim.keymap.set('n', ']c', ':Gitsigns next_hunk<CR>', { desc = "Next git hunk" })
+vim.keymap.set('n', '[c', ':Gitsigns prev_hunk<CR>', { desc = "Previous git hunk" })
+
+-- Autoformatter
+require('conform').setup({
+  formatters_by_ft = {
+    lua = { 'stylua' },
+    go = { 'gofmt' },
+    python = { 'yapf' },
+    cpp = { 'clang-format' },
+    c = { 'clang-format' },
+    bash = { 'shfmt' },
+    rust = { 'rustfmt' },
+    javascript = { 'prettier' },
+    typescript = { 'prettier' },
+    yaml = { 'prettier' },
+  },
+--format_on_save = {
+--  timeout_ms = 500,
+--  lsp_fallback = true,
+--},
+})
+vim.keymap.set({'n', 'v'}, '<leader>f', function() require('conform').format({lsp_fallback=true}) end, { desc = "Format code" })
+
+-- Session Manager
+require('auto-session').setup({
+  log_level = 'error',
+})
+
+-- LSP Configuration
+vim.lsp.config('pyright', {
+  cmd = {"uv", "run", "--with=pyright", "--", "pyright-langserver", "--stdio"},
+})
+vim.lsp.config('bashls', {
+  cmd = {"/usr/bin/env", "bash-language-server", "start" },
+})
+for _, lang in ipairs({'clangd', 'gopls', 'zls', 'ts_ls', 'vimls', 'pyright',
+                       'rust_analyzer', 'bashls'}) do
+  vim.lsp.enable(lang)
+end
+
+-- Treesitter for Syntax Highlighting
+require('nvim-treesitter.configs').setup {
+  ensure_installed = {"c", "lua", "cpp", "bash", "go", "javascript", "typescript", "vim", "yaml"},
+  sync_install = false,
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = false,
+  },
+  indent = {
+    enable = true
+  },
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "gnn",
+      node_incremental = "grn",
+      scope_incremental = "grc",
+      node_decremental = "grm",
+    },
+  },
+}
